@@ -1,0 +1,9 @@
+node_modules
+package.json
+package-lock.json
+.idea/aero-zeppelin.iml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
