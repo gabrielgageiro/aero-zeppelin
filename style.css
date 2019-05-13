@@ -6,12 +6,12 @@
 }
 .grid {
     max-width: 400px;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     border:  1px solid #cccccc;
 }
 .item {
-    margin: 5px;
-    background: tomato;
+    margin: 1px;
+    background: #F1EDE9;
     text-align: center;
 }
 
@@ -23,9 +23,35 @@ body {
 }
 
 body > div {
-	padding: 40px 0;
+	padding: 0 0;
 }
 
 body > div:nth-of-type(even) {
 	background: rgba(0,0,0,.03);
 }
+.div-input {
+    height: 200px;
+    width: 1000px;
+    font-size: 10px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 0px;
+    margin: 5px 0 0 0;
+}
+.md-button {
+    margin-top: 15px;
+    min-width: 1%;
+    font-size: 10px;
+    min-height: 2%;
+    line-height: 20px;
+}
+.borda-div {
+    border-radius: 15px;
+    border: 2px solid blue;
+    width: 1000px;
+    height: 200px; 
+  }
