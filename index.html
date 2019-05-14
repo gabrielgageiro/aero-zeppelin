@@ -19,116 +19,131 @@
 </head>
 
 <body ng-app="myApp" ng-controller="indexCtrl">
-    <!-- ENTRADA DE DADOS -->
-    <div flex layout="row" class="div-input">
-        <div flex="20" layout="column" class="div-input" style="border-style: groove">
-            <h1>Entrada de Dados</h1>
-            <div flex layout="row">
-                <div flex layout="column">
-                    <md-input-container flex>
-                        <label>Posição X</label>
-                        <input type="number" ng-model="entradaDeDados.x">
-                    </md-input-container>
-                </div>
-                <div flex layout="column">
-                    <md-input-container flex>
-                        <label>Posição Y</label>
-                        <input type="number" ng-model="entradaDeDados.y">
-                    </md-input-container>
+    <div flex layout="row" style="height: 600px">
+        <!-- COLUNA DOS INPUT -->
+        <div flex layout="column">
+            <!-- ENTRADA DE DADOS -->
+            <div flex layout="row" class="div-input">
+                <div flex="20" layout="column" class="div-input" style="border-style: groove">
+                    <h1>Entrada de Dados</h1>
+                    <div flex layout="row">
+                        <div flex layout="column">
+                            <md-input-container flex>
+                                <label>Posição X</label>
+                                <input type="number" ng-model="entradaDeDados.x">
+                            </md-input-container>
+                        </div>
+                        <div flex layout="column">
+                            <md-input-container flex>
+                                <label>Posição Y</label>
+                                <input type="number" ng-model="entradaDeDados.y">
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <div flex layout="row">
+                        <div flex layout="column">
+                            <md-input-container flex>
+                                <label>Raio</label>
+                                <input type="number" ng-model="entradaDeDados.raio">
+                            </md-input-container>
+                        </div>
+                        <div flex layout="column">
+                            <md-input-container flex>
+                                <label>Angulo</label>
+                                <input type="number" ng-model="entradaDeDados.angulo">
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <div flex layout="row">
+                        <div flex layout="column">
+                            <md-input-container flex>
+                                <label>Velocidade</label>
+                                <input type="number" ng-model="entradaDeDados.velocidade">
+                            </md-input-container>
+                        </div>
+                        <div flex layout="column">
+                            <md-input-container flex>
+                                <label>Direção</label>
+                                <input type="number" ng-model="entradaDeDados.direcao">
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <md-button class="md-raised md-primary" ng-click="teste(entradaDeDados)"
+                        style="background:rgb(253, 194, 0);">
+                        Inserir
+                    </md-button>
                 </div>
             </div>
-            <div flex layout="row">
-                <div flex layout="column">
-                    <md-input-container flex>
-                        <label>Raio</label>
-                        <input type="number" ng-model="entradaDeDados.raio">
-                    </md-input-container>
-                </div>
-                <div flex layout="column">
-                    <md-input-container flex>
-                        <label>Angulo</label>
-                        <input type="number" ng-model="entradaDeDados.angulo">
-                    </md-input-container>
+
+            <!-- Função de Transformação -->
+            <div flex layout="row" class="div-input" style="margin-top:5px;">
+                <div flex="50" layout="column" class="div-input" style="border-style: groove">
+                    <h1>Funções de Transformação</h1>
+                    <div flex layout="row">
+                        <div flex layout="column" style="margin-left:5px; border-style: groove">
+                            <div flex layout="row">
+                                <md-input-container flex>
+                                    <label>Transladar X</label>
+                                    <input type="number" ng-model="entradaDeDados.direcao">
+                                </md-input-container>
+                                <md-input-container flex>
+                                    <label>Transladar Y</label>
+                                    <input type="number" ng-model="entradaDeDados.direcao">
+                                </md-input-container>
+                            </div>
+                            <md-button class="md-raised md-primary" ng-click="teste(entradaDeDados)"
+                                style="background:blue;">
+                                Transladar
+                            </md-button>
+                        </div>
+
+                        <div flex layout="column" style="margin-left:5px; border-style: groove">
+                            <div flex layout="row">
+                                <md-input-container flex>
+                                    <label>Escalonar X</label>
+                                    <input type="number" ng-model="entradaDeDados.direcao">
+                                </md-input-container>
+                                <md-input-container flex>
+                                    <label>Escalonar Y</label>
+                                    <input type="number" ng-model="entradaDeDados.direcao">
+                                </md-input-container>
+                            </div>
+                            <md-button class="md-raised md-primary" ng-click="teste(entradaDeDados)"
+                                style="background:blue;">
+                                Escalonar
+                            </md-button>
+                        </div>
+                    </div>
+                    <div flex layout="row">
+                        <div layout="row" flex>
+                            <md-input-container flex>
+                                <label>Ângulo de Rotação</label>
+                                <input type="number" ng-model="entradaDeDados.direcao">
+                            </md-input-container>
+                            <md-input-container flex>
+                                <label>Centro de Rotação X</label>
+                                <input type="number" ng-model="entradaDeDados.direcao">
+                            </md-input-container>
+                            <md-input-container flex>
+                                <label>Centro de Rotação Y</label>
+                                <input type="number" ng-model="entradaDeDados.direcao">
+                            </md-input-container>
+                        </div>
+                        <md-button class="md-raised md-primary" ng-click="teste(entradaDeDados)"
+                            style="background:blue;">
+                            Escalonar
+                        </md-button>
+                    </div>
+
                 </div>
             </div>
-            <div flex layout="row">
-                <div flex layout="column">
-                    <md-input-container flex>
-                        <label>Velocidade</label>
-                        <input type="number" ng-model="entradaDeDados.velocidade">
-                    </md-input-container>
-                </div>
-                <div flex layout="column">
-                    <md-input-container flex>
-                        <label>Direção</label>
-                        <input type="number" ng-model="entradaDeDados.direcao">
-                    </md-input-container>
-                </div>
-            </div>
-            <md-button class="md-raised md-primary" ng-click="teste(entradaDeDados)"
-                style="background:rgb(253, 194, 0);">
-                Inserir
-            </md-button>
         </div>
-    </div>
+        <!-- COLUNA RADAR -->
+        <div flex layout="column" style="margin:0; padding:0">
+            <!-- RADAR -->
+            <div flex layout="column" class="radar">
 
-    <!-- Função de Transformação -->
-    <div flex layout="row" class="div-input" style="margin-top:5px;">
-        <div flex="50" layout="column" class="div-input" style="border-style: groove">
-            <h1>Funções de Transformação</h1>
-            <div flex layout="row">
-                <div flex layout="column" style="margin-left:5px; border-style: groove">
-                    <div flex layout="row">
-                        <md-input-container flex>
-                            <label>Transladar X</label>
-                            <input type="number" ng-model="entradaDeDados.direcao">
-                        </md-input-container>
-                        <md-input-container flex>
-                            <label>Transladar Y</label>
-                            <input type="number" ng-model="entradaDeDados.direcao">
-                        </md-input-container>
-                    </div>
-                    <md-button class="md-raised md-primary" ng-click="teste(entradaDeDados)" style="background:blue;">
-                        Transladar
-                    </md-button>
-                </div>
-
-                <div flex layout="column" style="margin-left:5px; border-style: groove">
-                    <div flex layout="row">
-                        <md-input-container flex>
-                            <label>Escalonar X</label>
-                            <input type="number" ng-model="entradaDeDados.direcao">
-                        </md-input-container>
-                        <md-input-container flex>
-                            <label>Escalonar Y</label>
-                            <input type="number" ng-model="entradaDeDados.direcao">
-                        </md-input-container>
-                    </div>
-                    <md-button class="md-raised md-primary" ng-click="teste(entradaDeDados)" style="background:blue;">
-                        Escalonar
-                    </md-button>
-                </div>
             </div>
-            <div flex layout="row">
-                <div layout="row" flex>
-                    <md-input-container flex>
-                        <label>Ângulo de Rotação</label>
-                        <input type="number" ng-model="entradaDeDados.direcao">
-                    </md-input-container>
-                    <md-input-container flex>
-                        <label>Centro de Rotação X</label>
-                        <input type="number" ng-model="entradaDeDados.direcao">
-                    </md-input-container>
-                    <md-input-container flex>
-                        <label>Centro de Rotação Y</label>
-                        <input type="number" ng-model="entradaDeDados.direcao">
-                    </md-input-container>
-                </div>
-                <md-button class="md-raised md-primary" ng-click="teste(entradaDeDados)" style="background:blue;">
-                    Escalonar
-                </md-button>
-            </div>
-
         </div>
     </div>
 </body>

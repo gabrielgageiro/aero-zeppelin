@@ -55,3 +55,9 @@ h1 {
     width: 1000px;
     height: 200px; 
   }
+.radar {
+    width: 1000px;
+    height: 1000px;
+    border: 2px solid blue;
+    background-color: aqua;
+}
