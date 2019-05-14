@@ -1,5 +1,4 @@
 node_modules
-package.json
 package-lock.json
 .idea/aero-zeppelin.iml
 .idea/encodings.xml
