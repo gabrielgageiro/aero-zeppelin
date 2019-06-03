@@ -48,13 +48,9 @@ h1 {
     font-size: 10px;
     min-height: 2%;
     line-height: 20px;
+
 }
-.borda-div {
-    border-radius: 15px;
-    border: 2px solid blue;
-    width: 1000px;
-    height: 200px; 
-  }
+
 .radar {
     width: 1000px;
     height: 1000px;
