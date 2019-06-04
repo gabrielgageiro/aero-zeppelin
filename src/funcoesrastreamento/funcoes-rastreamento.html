@@ -1,0 +1,61 @@
+<div flex  style="margin-top:5px;" ng-controller="rastreamentoCtrl">
+    <div flex="50" layout="column" class="div-input" style="border-style: groove">
+        <h1>Funções de Rastreamento</h1>
+        <div flex layout="row">
+            <div flex layout="column" style="margin-left:5px; border-style: groove">
+                <div flex layout="row">
+                    <md-input-container flex>
+                        <label>Transladar X</label>
+                        <input type="number" ng-model="entradaDeDados.direcao">
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label>Transladar Y</label>
+                        <input type="number" ng-model="entradaDeDados.direcao">
+                    </md-input-container>
+                </div>
+                <md-button class="md-raised md-primary" ng-click="teste(entradaDeDados)"
+                           style="background:red;">
+                    Transladar
+                </md-button>
+            </div>
+
+            <div flex layout="column" style="margin-left:5px; border-style: groove">
+                <div flex layout="row">
+                    <md-input-container flex>
+                        <label>Escalonar X</label>
+                        <input type="number" ng-model="entradaDeDados.direcao">
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label>Escalonar Y</label>
+                        <input type="number" ng-model="entradaDeDados.direcao">
+                    </md-input-container>
+                </div>
+                <md-button class="md-raised md-primary" ng-click="teste(entradaDeDados)"
+                           style="background:red;">
+                    Escalonar
+                </md-button>
+            </div>
+        </div>
+        <div flex layout="row">
+            <div layout="row" flex>
+                <md-input-container flex>
+                    <label>Ângulo de Rotação</label>
+                    <input type="number" ng-model="entradaDeDados.direcao">
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Centro de Rotação X</label>
+                    <input type="number" ng-model="entradaDeDados.direcao">
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Centro de Rotação Y</label>
+                    <input type="number" ng-model="entradaDeDados.direcao">
+                </md-input-container>
+            </div>
+            <md-button class="md-raised md-primary" ng-click="teste(entradaDeDados)"
+                       style="background:red;">
+                Escalonar
+            </md-button>
+        </div>
+
+    </div>
+</div>

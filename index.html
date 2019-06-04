@@ -20,14 +20,15 @@
     <script src="index-controller.js"></script>
     <script src="src/entradadados/entrada-dados-controller.js"></script>
     <script src="src/funcoestransformacao/funcoes-transformacao-controller.js"></script>
+    <script src="src/funcoesrastreamento/funcoes-rastreamento-controller.js"></script>
 </head>
 
 <body ng-controller="indexCtrl" layout="column">
 <div flex layout="row" style="overflow: hidden">
     <div flex="50" layout="column" style="overflow: hidden">
         <div flex ng-include="'src/entradadados/entrada-dados.html'"></div>
-        <!-- Função de Transformação -->
         <div flex ng-include="'src/funcoestransformacao/funcoes-transformacao.html'"></div>
+        <div flex ng-include="'src/funcoesrastreamento/funcoes-rastreamento.html'"></div>
     </div>
     <!-- COLUNA RADAR -->
     <div flex layout="column" style="margin:0; padding:0">
