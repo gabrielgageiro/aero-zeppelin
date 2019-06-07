@@ -11,7 +11,6 @@ app.controller('entradaCtrl', function($scope) {
     };
 
     $scope.init = function(){
-        console.table('teste');
     };
 
     $scope.inserirAviao = function(bean){
