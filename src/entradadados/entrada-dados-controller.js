@@ -1,4 +1,5 @@
 app.controller('entradaCtrl', function($scope) {
+    self.avioes = [];
 
     $scope.entradaDeDados = {
         x : '',
@@ -19,25 +20,39 @@ app.controller('entradaCtrl', function($scope) {
 
     $scope.carregaAviao = function(bean){
         if($scope.validarPosicaoAviao(bean)){
-        var radar = document.querySelector("#radar");
+            var aviao = new Object();
+            aviao.x = bean.x;
+            aviao.y = bean.y;
+            self.avioes.push(aviao);
+
+            var radar = document.querySelector("#radar");
 
             var ctx = radar.getContext('2d');
+            ctx.fillStyle = 'red';
     
             //ctx.fillRect(bean.x, bean.y, 5, 3);//x, y, width, height
             var retangulo = new Path2D();
             retangulo.rect(bean.x, bean.y, 8, 6);
             ctx.fill(retangulo);
-        }else {
-            console.log('Já existe um avião proximo, insira-o em outras coordenadas.');
         }
     };
 
-    $scope.validarPosicaoAviao = function(bean){
-        console.log($scope.distanciaEntrePontos(30, 36, 33, 40));
+    $scope.validarPosicaoAviao = function(novoAviao){        
+        if(self.avioes.length == 0){
+            return true;
+        }
+        for(var i=0; i < self.avioes.length; i++){
+            if($scope.distanciaEntrePontos(novoAviao.x, novoAviao.y, self.avioes[i].x, self.avioes[i].y) < 10){
+                alert('A distância entre dois aviões não deve ser menor que 10, neste caso ela é '+$scope.distanciaEntrePontos(novoAviao.x, novoAviao.y, self.avioes[i].x, self.avioes[i].y));
+                return false;
+            }
+
+        }
+        return true;
     };
     
     $scope.distanciaEntrePontos = function(x1, y1, x2, y2){
-        return Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1)), 2);
+        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2), 2);
     };
 
     $scope.init();
