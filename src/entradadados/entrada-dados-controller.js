@@ -18,11 +18,13 @@ app.controller('entradaCtrl', function($scope) {
     };
 
     $scope.carregaAviao = function(bean){
+        console.log(bean);
         if($scope.validarPosicaoAviao(bean)){
             var aviao = new Object();
             aviao.x = bean.x;
             aviao.y = bean.y;
-            self.avioes.push(aviao);
+            self.avioes.push(bean);
+            console.log(self.avioes);
 
             var radar = document.querySelector("#radar");
 

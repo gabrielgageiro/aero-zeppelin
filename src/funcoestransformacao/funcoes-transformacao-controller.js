@@ -10,7 +10,6 @@ app.controller('transformacaoCtrl', function($scope) {
     };
 
     $scope.init = function(){
-        console.table('teste');
     };
 
     $scope.teste = function(bean){
