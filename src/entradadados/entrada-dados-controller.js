@@ -29,15 +29,25 @@ app.controller('entradaCtrl', function($scope) {
 
             var ctx = radar.getContext('2d');
             ctx.fillStyle = 'red';
+
+            var x = radar.width/2;
+            var y = radar.height/2;
+
+            if(bean.x >= 0 && bean.y >= 0){
+                //ctx.fillRect(bean.x, bean.y, 5, 3);//x, y, width, height
+                x += bean.x;
+                y += bean.y;
+                
+                var retangulo = new Path2D();
+                retangulo.rect(x, y, 8, 6);
+                ctx.fill(retangulo);
+            }
     
-            //ctx.fillRect(bean.x, bean.y, 5, 3);//x, y, width, height
-            var retangulo = new Path2D();
-            retangulo.rect(bean.x, bean.y, 8, 6);
-            ctx.fill(retangulo);
+            
         }
     };
 
-    $scope.validarPosicaoAviao = function(novoAviao){        
+    $scope.validarPosicaoAviao = function(novoAviao){      
         if(self.avioes.length == 0){
             return true;
         }
