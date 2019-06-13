@@ -22,13 +22,13 @@
                 <div flex layout="column">
                     <md-input-container flex>
                         <label>Raio</label>
-                        <input type="number" ng-model="entradaDeDados.raio">
+                        <input type="number" min="0" ng-model="entradaDeDados.raio">
                     </md-input-container>
                 </div>
                 <div flex layout="column">
                     <md-input-container flex>
                         <label>Angulo</label>
-                        <input type="number" ng-model="entradaDeDados.angulo">
+                        <input type="number" min="0" ng-model="entradaDeDados.angulo">
                     </md-input-container>
                 </div>
             </div>
@@ -36,13 +36,13 @@
                 <div flex layout="column">
                     <md-input-container flex>
                         <label>Velocidade</label>
-                        <input type="number" ng-model="entradaDeDados.velocidade">
+                        <input type="number" min="0" ng-model="entradaDeDados.velocidade">
                     </md-input-container>
                 </div>
                 <div flex layout="column">
                     <md-input-container flex>
                         <label>Direção</label>
-                        <input type="number" ng-model="entradaDeDados.direcao">
+                        <input type="number" min="0" ng-model="entradaDeDados.direcao">
                     </md-input-container>
                 </div>
             </div>
