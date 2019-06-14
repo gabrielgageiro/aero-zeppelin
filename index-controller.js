@@ -7,14 +7,14 @@ app.controller('indexCtrl', ['$scope', function($scope) {
         angulo : '',
         velocidade : '',
         direcao : ''
-    }
+    };
 
 	$scope.init = function(){
 	};
 
 	$scope.teste = function(bean){
         console.log(bean);
-	}
+	};
 	
 	$scope.init();
 }]);
