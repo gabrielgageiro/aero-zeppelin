@@ -1,19 +1,23 @@
-<div flex layout="column" style="border-style: groove" ng-controller="entradaCtrl">
-<!--    todo toolbar-->
-    <h1>Entrada de Dados</h1>
+<div flex style="border-style: groove" ng-controller="entradaCtrl" layout-fill>
+    <md-toolbar class="md-small-tb">
+        <div class="md-toolbar-tools">
+            <h1 flex>Entrada de Dados</h1>
+        </div>
+    </md-toolbar>
+    <md-content flex class="toolbar-content" layout="column">
     <div flex layout="row">
-        <div flex layout="column">
+<!--        <div flex layout="column">-->
             <md-input-container flex>
                 <label>Posição X</label>
                 <input type="number" ng-model="entradaDeDados.x">
             </md-input-container>
-        </div>
-        <div flex layout="column">
+<!--        </div>-->
+<!--        <div flex layout="column">-->
             <md-input-container flex>
                 <label>Posição Y</label>
                 <input type="number" ng-model="entradaDeDados.y">
             </md-input-container>
-        </div>
+<!--        </div>-->
     </div>
     <div flex layout="row">
         <div flex layout="column">
@@ -47,4 +51,5 @@
                style="background:rgb(253, 194, 0);">
         Inserir
     </md-button>
+    </md-content>
 </div>

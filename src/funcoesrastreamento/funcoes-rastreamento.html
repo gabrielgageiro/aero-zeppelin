@@ -5,7 +5,8 @@
         </div>
     </md-toolbar>
     <md-content flex class="toolbar-content" layout="column">
-            <md-input-container flex layout="row">
+            <md-input-container flex>
+                <div flex layout="row">
                 <div flex>
                     <label>Distância mínima do aeroporto</label>
                     <input type="number" ng-model="entradaDeDados.direcao">
@@ -16,8 +17,11 @@
                         Próximo aeroporto
                     </md-button>
                 </div>
+                </div>
             </md-input-container>
-            <md-input-container flex layout="row">
+            <md-input-container flex>
+                <div flex layout="row">
+
                 <div flex>
                     <label>Distância mínima avião</label>
                     <input type="number" ng-model="entradaDeDados.direcao">
@@ -28,8 +32,10 @@
                         Próximo ao avião
                     </md-button>
                 </div>
+                </div>
             </md-input-container>
-            <md-input-container flex layout="row">
+            <md-input-container flex >
+                <div flex layout="row">
 
                 <div flex>
                     <label>Tempo mínimo</label>
@@ -41,6 +47,7 @@
                                style="background:red;">
                         Rota Colisão
                     </md-button>
+                </div>
                 </div>
             </md-input-container>
     </md-content>
