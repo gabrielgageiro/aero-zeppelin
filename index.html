@@ -24,11 +24,11 @@
     <script src="src/grid/grid-controller.js"></script>
     <script src="src/console/console-controller.js"></script>
 </head>
-<body flex layout="column" ng-controller="indexCtrl">
+<body layout="column" ng-controller="indexCtrl">
 <div layout="row" flex style="overflow: hidden">
-    <div flex="20" layout="column">
-        <div flex="20" layout="row" ng-include="'src/funcoesrastreamento/funcoes-rastreamento.html'"></div>
-        <div layout="row" style="border-style: groove" flex class="div-input" ng-include="'src/grid/grid.html'"></div>
+    <div flex="25" layout="column">
+        <div flex="30" ng-include="'src/funcoesrastreamento/funcoes-rastreamento.html'"></div>
+        <div flex ng-include="'src/grid/grid.html'"></div>
     </div>
     <div flex="60" layout="column">
         <canvas layout="row" flex="50" id="radar"  class="canvas"></canvas>
