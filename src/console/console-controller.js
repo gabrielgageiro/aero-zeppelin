@@ -11,8 +11,8 @@ app.controller('consoleCtrl', function($scope) {
           let now = new Date();
 
           let dia = now.getDate().toString();
-          console.log(now + " " + 'Oi, sou Goku');
-          registros.push(now + " " + 'Oi, sou Goku' +" " + i);
+          //console.log(now + " " + 'Oi, sou Goku');
+          //registros.push(now + " " + 'Oi, sou Goku' +" " + i);
       }
       return registros;
     };

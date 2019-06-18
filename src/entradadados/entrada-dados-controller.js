@@ -10,7 +10,10 @@ app.controller('entradaCtrl', function($scope) {
         direcao : ''
     };
 
+    $scope.disabilitado = false;
+
     $scope.init = function(){
+        document.getElementById('polar').style.display = 'none';
     };
 
     $scope.inserirAviao = function(bean){
@@ -54,6 +57,20 @@ app.controller('entradaCtrl', function($scope) {
     
     $scope.distanciaEntrePontos = function(x1, y1, x2, y2){
         return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2), 2);
+    };
+
+    $scope.trocaFormaEntradaAviao = function () {
+        var display = document.getElementById('cartesiano').style.display;
+
+        if(display == 'block'){
+            document.getElementById('polar').style.display = 'block';
+            document.getElementById('cartesiano').style.display = 'none';
+            document.getElementById('nameEntradaDados').innerText = "CARTESIANO";
+        }else {
+            document.getElementById('polar').style.display = 'none';
+            document.getElementById('cartesiano').style.display = 'block';
+            document.getElementById('nameEntradaDados').innerText = "POLAR";
+        }
     };
 
     $scope.init();

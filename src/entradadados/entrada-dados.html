@@ -1,12 +1,15 @@
 <div flex ng-controller="entradaCtrl">
     <md-toolbar class="md-small-tb">
         <div class="md-toolbar-tools">
+            <md-button id="nameEntradaDados" class="btn1" ng-click="trocaFormaEntradaAviao(entradaDeDados)">
+                POLAR
+            </md-button>
             <h1 flex>Entrada de Dados</h1>
         </div>
     </md-toolbar>
     <md-content flex class="toolbar-content" layout="column">
         <div flex layout="row" layout-fill>
-            <div flex layout="column" class="div-input">
+            <div flex layout="column" class="div-input" id="cartesiano" style="display: block;">
                 <md-input-container flex>
                     <label>Posição X</label>
                     <input type="number" ng-model="entradaDeDados.x">
@@ -17,14 +20,14 @@
                 </md-input-container>
             </div>
 
-            <div flex layout="column" class="div-input">
+            <div flex layout="column" class="div-input" id="polar">
                 <md-input-container flex>
                     <label>Raio</label>
-                    <input type="number" ng-model="entradaDeDados.raio">
+                    <input id="raio" type="number" ng-model="entradaDeDados.raio" ng-disabled="disabilitado">
                 </md-input-container>
                 <md-input-container flex>
                     <label>Angulo</label>
-                    <input type="number" ng-model="entradaDeDados.angulo">
+                    <input type="number" ng-model="entradaDeDados.angulo" ng-disabled="disabilitado">
                 </md-input-container>
             </div>
             <div flex layout="column" class="div-input">
