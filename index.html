@@ -25,7 +25,7 @@
     <script src="src/console/console-controller.js"></script>
 </head>
 <body layout="column" ng-controller="indexCtrl">
-<div layout="row" flex style="overflow: hidden">
+<div layout="row" flex>
     <div flex="25" layout="column">
         <div flex="30" ng-include="'src/funcoesrastreamento/funcoes-rastreamento.html'"></div>
         <div flex ng-include="'src/grid/grid.html'"></div>
@@ -35,8 +35,8 @@
         <div flex ng-include="'src/entradadados/entrada-dados.html'"></div>
         <div flex ng-include="'src/funcoestransformacao/funcoes-transformacao.html'"></div>
     </div>
-    <div flex layout="column" style="margin-top:5px;">
-        <div flex ng-include="'src/console/console.html'" style="margin-left:5px; border-style: groove" flex class="div-input" ></div>
+    <div flex layout="column">
+        <div flex ng-include="'src/console/console.html'" style="border-style: groove"></div>
     </div>
 </div>
 </body>
