@@ -4,8 +4,8 @@
             <h1 flex>Transformação</h1>
         </div>
     </md-toolbar>
-    <md-content flex class="toolbar-content" layout="column" style="max-height: 215px;">
-        <div flex layout="row">
+    <md-content flex class="toolbar-content" layout="column" style="max-height: 215px; overflow: hidden">
+        <div flex layout="row" style="max-width: 97%">
             <md-input-container flex>
                 <label>Transladar X</label>
                 <input type="number" ng-model="entradaDeDados.direcao">
@@ -21,7 +21,7 @@
                 </md-button>
             </div>
         </div>
-        <div flex layout="row">
+        <div flex layout="row" style="max-width: 97%">
             <md-input-container flex>
                 <label>Escalonar X</label>
                 <input type="number" ng-model="entradaDeDados.direcao">
@@ -32,12 +32,12 @@
             </md-input-container>
             <div flex="10">
                 <md-button class="md-raised md-primary" ng-click="teste(entradaDeDados)"
-                           style="background:blue;">
-                    Escalonar
+                           style="background:blue; margin-top: 19px; width: 105px" >
+                                Escalonar
                 </md-button>
             </div>
         </div>
-        <div flex layout="row">
+        <div flex layout="row" style="max-width: 97%">
             <md-input-container flex>
                 <label>Ângulo de Rotação</label>
                 <input type="number" ng-model="entradaDeDados.direcao">
@@ -52,7 +52,7 @@
             </md-input-container>
             <div flex="10">
                 <md-button class="md-raised md-primary" ng-click="teste(entradaDeDados)"
-                           style="background:blue;">
+                           style="background:blue; margin-top: 19px;">
                     Rotacionar
                 </md-button>
             </div>
