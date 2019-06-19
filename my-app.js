@@ -3,5 +3,4 @@ var app = angular.module("myApp",["ngMaterial","ngMessages","ui.router","ngResou
 .run(runApp);
 
 function runApp(){
-    console.log('ola mundo');
 }

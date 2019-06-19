@@ -1,0 +1,12 @@
+<div flex ng-controller="consoleCtrl">
+    <md-toolbar class="md-small-tb">
+        <div class="md-toolbar-tools">
+            <h1 flex>Console</h1>
+        </div>
+    </md-toolbar>
+    <md-content flex class="toolbar-content" style="max-height: 945px;">
+        <div flex style="margin: 5px;" ng-repeat="linha in getRegistros()">
+            <span ng-bind="linha"></span>
+        </div>
+    </md-content>
+</div>
