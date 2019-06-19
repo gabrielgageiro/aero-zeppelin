@@ -42,7 +42,7 @@ app.controller('entradaCtrl', function($scope) {
     };
 
     $scope.validarPosicaoAviao = function(novoAviao){        
-        if(self.avioes.length == 0){
+        if(self.avioes.length === 0){
             return true;
         }
         for(var i=0; i < self.avioes.length; i++){

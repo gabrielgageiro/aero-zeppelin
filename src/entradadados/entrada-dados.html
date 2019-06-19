@@ -1,9 +1,6 @@
 <div flex ng-controller="entradaCtrl">
     <md-toolbar class="md-small-tb">
         <div class="md-toolbar-tools">
-            <md-button id="nameEntradaDados" class="btn1" ng-click="trocaFormaEntradaAviao(entradaDeDados)">
-                POLAR
-            </md-button>
             <h1 flex>Entrada de Dados</h1>
         </div>
     </md-toolbar>
@@ -41,9 +38,15 @@
                 </md-input-container>
             </div>
         </div>
-        <md-button layout-fill class="md-raised md-primary" ng-click="inserirAviao(entradaDeDados)"
-                   style="background:rgb(253, 194, 0);">
-            Inserir
-        </md-button>
+        <div flex layout="row">
+            <md-button id="nameEntradaDados" layout-fill class="md-raised md-primary" ng-click="trocaFormaEntradaAviao()">
+                POLAR
+            </md-button>
+            <md-button layout-fill class="md-raised md-primary" ng-click="inserirAviao(entradaDeDados)"
+                       style="background:rgb(253, 194, 0);">
+                Inserir
+            </md-button>
+        </div>
+
     </md-content>
 </div>
