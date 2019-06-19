@@ -6,7 +6,7 @@
     </md-toolbar>
     <md-content flex class="toolbar-content" layout="column">
         <div flex layout="row" layout-fill>
-            <div flex layout="column" class="div-input" id="cartesiano" style="display: block;">
+            <div flex layout="column" class="div-input" ng-if="cartesiano">
                 <md-input-container flex>
                     <label>Posição X</label>
                     <input type="number" ng-model="entradaDeDados.x">
@@ -17,17 +17,17 @@
                 </md-input-container>
             </div>
 
-            <div flex layout="column" class="div-input" id="polar">
+            <div flex layout="column" class="div-input" ng-if="!cartesiano">
                 <md-input-container flex>
                     <label>Raio</label>
-                    <input id="raio" type="number" ng-model="entradaDeDados.raio" ng-disabled="disabilitado">
+                    <input id="raio" type="number" ng-model="entradaDeDados.raio">
                 </md-input-container>
                 <md-input-container flex>
                     <label>Angulo</label>
-                    <input type="number" ng-model="entradaDeDados.angulo" ng-disabled="disabilitado">
+                    <input type="number" ng-model="entradaDeDados.angulo" >
                 </md-input-container>
             </div>
-            <div flex layout="column" class="div-input">
+            <div flex layout="column" class="div-input" >
                 <md-input-container flex>
                     <label>Velocidade</label>
                     <input type="number" ng-model="entradaDeDados.velocidade">
@@ -40,7 +40,7 @@
         </div>
         <div flex layout="row">
             <md-button id="nameEntradaDados" layout-fill class="md-raised md-primary" ng-click="trocaFormaEntradaAviao()">
-                POLAR
+               {{cartesiano ? 'POLAR' : 'CARTESIANO'}}
             </md-button>
             <md-button layout-fill class="md-raised md-primary" ng-click="inserirAviao(entradaDeDados)"
                        style="background:rgb(253, 194, 0);">
