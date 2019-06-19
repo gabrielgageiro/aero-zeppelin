@@ -1,4 +1,4 @@
-<div flex ng-controller="entradaCtrl">
+<div flex ng-controller="entradaCtrl as ctrl">
     <md-toolbar class="md-small-tb">
         <div class="md-toolbar-tools">
             <h1 flex>Entrada de Dados</h1>
@@ -6,7 +6,7 @@
     </md-toolbar>
     <md-content flex class="toolbar-content" layout="column">
         <div flex layout="row" layout-fill>
-            <div flex layout="column" class="div-input" ng-if="cartesiano">
+            <div flex layout="column" class="div-input" ng-if="ctrl.cartesiano">
                 <md-input-container flex>
                     <label>Posição X</label>
                     <input type="number" ng-model="entradaDeDados.x">
@@ -17,7 +17,7 @@
                 </md-input-container>
             </div>
 
-            <div flex layout="column" class="div-input" ng-if="!cartesiano">
+            <div flex layout="column" class="div-input" ng-if="!ctrl.cartesiano">
                 <md-input-container flex>
                     <label>Raio</label>
                     <input id="raio" type="number" ng-model="entradaDeDados.raio">
@@ -40,7 +40,7 @@
         </div>
         <div flex layout="row">
             <md-button id="nameEntradaDados" layout-fill class="md-raised md-primary" ng-click="trocaFormaEntradaAviao()">
-               {{cartesiano ? 'POLAR' : 'CARTESIANO'}}
+               {{ctrl.cartesiano ? 'POLAR' : 'CARTESIANO'}}
             </md-button>
             <md-button layout-fill class="md-raised md-primary" ng-click="inserirAviao(entradaDeDados)"
                        style="background:rgb(253, 194, 0);">

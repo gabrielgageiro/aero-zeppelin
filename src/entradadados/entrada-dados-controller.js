@@ -1,7 +1,9 @@
 app.controller('entradaCtrl', function($scope) {
+    var self = this;
+
     self.avioes = [];
 
-    $scope.cartesiano = true;
+    self.cartesiano = true;
 
     $scope.entradaDeDados = {
         x : '',
@@ -62,7 +64,7 @@ app.controller('entradaCtrl', function($scope) {
     };
 
     $scope.trocaFormaEntradaAviao = function () {
-        $scope.cartesiano = !$scope.cartesiano;
+        self.cartesiano = !self.cartesiano;
     };
 
     $scope.init();
