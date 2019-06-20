@@ -1,11 +1,11 @@
-<div flex ng-controller="transformacaoCtrl" style="max-height: 850px;">
+<div flex ng-controller="transformacaoCtrl" >
     <md-toolbar class="md-small-tb">
         <div class="md-toolbar-tools">
             <h1 flex>Transformação</h1>
         </div>
     </md-toolbar>
-    <md-content flex class="toolbar-content" layout="column" style="max-height: 215px;">
-        <div flex layout="row">
+    <md-content flex class="toolbar-content" layout="column" style="max-height: 217px; overflow: hidden">
+        <div flex layout="row" style="max-width: 97%">
             <md-input-container flex>
                 <label>Transladar X</label>
                 <input type="number" ng-model="entradaDeDados.direcao">
@@ -16,12 +16,12 @@
             </md-input-container>
             <div flex="10">
                 <md-button class="md-raised md-primary" ng-click="teste(entradaDeDados)"
-                           style="background:blue; margin-top: 19px;">
+                           style="background:blue; margin-top: 19px; width: 115px" ">
                     Transladar
                 </md-button>
             </div>
         </div>
-        <div flex layout="row">
+        <div flex layout="row" style="max-width: 97%">
             <md-input-container flex>
                 <label>Escalonar X</label>
                 <input type="number" ng-model="entradaDeDados.direcao">
@@ -32,12 +32,12 @@
             </md-input-container>
             <div flex="10">
                 <md-button class="md-raised md-primary" ng-click="teste(entradaDeDados)"
-                           style="background:blue;">
-                    Escalonar
+                           style="background:blue; margin-top: 19px; width: 115px" >
+                                Escalonar
                 </md-button>
             </div>
         </div>
-        <div flex layout="row">
+        <div flex layout="row" style="max-width: 97%">
             <md-input-container flex>
                 <label>Ângulo de Rotação</label>
                 <input type="number" ng-model="entradaDeDados.direcao">
@@ -52,7 +52,7 @@
             </md-input-container>
             <div flex="10">
                 <md-button class="md-raised md-primary" ng-click="teste(entradaDeDados)"
-                           style="background:blue;">
+                           style="background:blue; margin-top: 19px; width: 115px" ">
                     Rotacionar
                 </md-button>
             </div>

@@ -5,12 +5,12 @@ app.controller('gridCtrl', function($scope, $mdDialog) {
 
 
     $scope.getTesteAviao = function(){
-        var aviao = [];
-
-        for (var i = 0; i< 13; i++){
-            aviao.push("AVIÃO LATAM MATRICULA " + i);
-        }
-        return aviao;
+        // var aviao = [];
+        //
+        // for (var i = 0; i< 13; i++){
+        //     aviao.push("AVIÃO LATAM MATRICULA " + i);
+        // }
+        // return aviao;
     };
 
     $scope.removerAviao = function (index) {
