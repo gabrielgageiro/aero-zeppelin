@@ -4,49 +4,53 @@
             <h1 flex>Rastreamento</h1>
         </div>
     </md-toolbar>
-    <md-content flex class="toolbar-content" layout="column">
-        <md-input-container flex>
-            <div flex layout="row">
-                <div flex>
-                    <label>Distância mínima do aeroporto</label>
-                    <input type="number" ng-model="entradaDeDados.direcao">
+    <md-content flex class="toolbar-content">
+        <div flex>
+            <div layout="column" flex="100">
+            <md-input-container flex>
+                <div flex layout="row">
+                    <div flex>
+                        <label>Distância mínima do aeroporto</label>
+                        <input type="number" ng-model="entradaDeDados.direcao">
+                    </div>
+                    <div flex="40">
+                        <md-button class="md-raised md-primary " ng-click="teste(entradaDeDados)"
+                                   style="background:red;width: 180px">
+                            Próximo aeroporto
+                        </md-button>
+                    </div>
                 </div>
-                <div flex="40">
-                    <md-button class="md-raised md-primary " ng-click="teste(entradaDeDados)"
-                               style="background:red;width: 180px">
-                        Próximo aeroporto
-                    </md-button>
-                </div>
-            </div>
-        </md-input-container>
-        <md-input-container flex>
-            <div flex layout="row">
+            </md-input-container>
+            <md-input-container flex>
+                <div flex layout="row">
 
-                <div flex>
-                    <label>Distância mínima avião</label>
-                    <input type="number" ng-model="entradaDeDados.direcao">
+                    <div flex>
+                        <label>Distância mínima avião</label>
+                        <input type="number" ng-model="entradaDeDados.direcao">
+                    </div>
+                    <div flex="40">
+                        <md-button class="md-raised md-primary" ng-click="teste(entradaDeDados)"
+                                   style="background:red;width: 180px">
+                            Próximo ao avião
+                        </md-button>
+                    </div>
                 </div>
-                <div flex="40">
-                    <md-button class="md-raised md-primary" ng-click="teste(entradaDeDados)"
-                               style="background:red;width: 180px">
-                        Próximo ao avião
-                    </md-button>
+            </md-input-container>
+            <md-input-container flex>
+                <div flex layout="row">
+                    <div flex>
+                        <label>Tempo mínimo</label>
+                        <input type="number" ng-model="entradaDeDados.direcao">
+                    </div>
+                    <div flex="40">
+                        <md-button class="md-raised md-primary" ng-click="teste(entradaDeDados)"
+                                   style="background:red;width: 180px">
+                            Rota Colisão
+                        </md-button>
+                    </div>
                 </div>
-            </div>
-        </md-input-container>
-        <md-input-container flex>
-            <div flex layout="row">
-                <div flex>
-                    <label>Tempo mínimo</label>
-                    <input type="number" ng-model="entradaDeDados.direcao">
-                </div>
-                <div flex="40">
-                    <md-button class="md-raised md-primary" ng-click="teste(entradaDeDados)"
-                               style="background:red;width: 180px">
-                        Rota Colisão
-                    </md-button>
-                </div>
-            </div>
-        </md-input-container>
+            </md-input-container>
+        </div>
+        </div>
     </md-content>
 </div>
