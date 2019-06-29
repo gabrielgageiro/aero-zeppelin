@@ -1,10 +1,13 @@
 aviaoApp.factory('Aviao', function() {
 
     function Aviao() {
-        this.nome = 'oi1';
+        this.nome = geraAviaoAleatorio();
         this.selecionado = true;
     }
 
+    function geraAviaoAleatorio(){
+        return Math.floor(Math.random() * 10);
+    }
 
     Aviao.prototype.getX = function () {
         return this.x;
@@ -64,6 +67,10 @@ aviaoApp.factory('Aviao', function() {
 
     Aviao.prototype.changeSelecionado = function () {
         return this.selecionado = !this.selecionado;
+    };
+
+    Aviao.prototype.getNome = function () {
+        return this.nome;
     };
 
     return Aviao;
