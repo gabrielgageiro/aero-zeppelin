@@ -5,6 +5,8 @@ app.controller('entradaCtrl', function($scope) {
 
     self.cartesiano = true;
 
+    self.ctx;
+
     $scope.entradaDeDados = {
         x : '',
         y: '',
@@ -14,44 +16,64 @@ app.controller('entradaCtrl', function($scope) {
         direcao : ''
     };
 
-    $scope.disabilitado = false;
-
     $scope.init = function(){
-        // document.getElementById('polar').style.display = 'none';
+        self.ctx = $scope.getContextCanvas();
+        setInterval(function(){
+            $scope.atualizaTodosAvioes();
+        }, 7000);
     };
 
-    $scope.inserirAviao = function(bean){
+    $scope.inserirAviao = function (bean) {
+        if (!self.cartesiano && bean.raio && bean.angulo) {
+            $scope.polarCartesiano(bean);
+        }
         $scope.carregaAviao(bean);
     };
 
-    $scope.carregaAviao = function(bean){
-        console.log(bean);
-        if($scope.validarPosicaoAviao(bean)){
+    $scope.carregaAviao = function (bean) {
+        if ($scope.validarPosicaoAviao(bean)) {
             var aviao = new Object();
             aviao.x = bean.x;
             aviao.y = bean.y;
-            self.avioes.push(bean);
+            // let aviao = new Aviao();
+            // aviao.setX(bean.x);
+            // aviao.setY(bean.y);
+            self.avioes.push(aviao);
+
             console.log(self.avioes);
-
-            var radar = document.querySelector("#radar");
-
-            var ctx = radar.getContext('2d');
-            ctx.fillStyle = 'red';
-
-            var x = radar.width/2;
-            var y = radar.height/2;
-
-            if(bean.x >= 0 && bean.y >= 0){
-                //ctx.fillRect(bean.x, bean.y, 5, 3);//x, y, width, height
-                x += bean.x;
-                y += bean.y;
-                
-                var retangulo = new Path2D();
-                retangulo.rect(x, y, 8, 6);
-                ctx.fill(retangulo);
-            }
-    
             
+            //$scope.desenharNoRadar(self.avioes);
+        }
+    };
+
+    $scope.getContextCanvas = function(){
+        let radar = document.querySelector('#radar');
+        let ctx = radar.getContext('2d');
+        return ctx;
+    };
+
+    $scope.desenharNoRadar = function(aviao){        
+
+        let x = radar.width / 2;
+        let y = radar.height / 2;
+
+        x += aviao.x;
+        y -= aviao.y;
+       
+        //ctx.fillText(aviao.getNome(), x, y);
+        self.ctx.fillText($scope.geraAviaoAleatorio(), x, y);
+
+    };
+    $scope.geraAviaoAleatorio = function(){
+        return Math.floor(Math.random() * 10);
+    };
+
+    $scope.atualizaTodosAvioes = function(){
+        //let radar = document.querySelector('#radar');
+        //$scope.limparTela(radar.width, radar.height);
+        
+        for(let i=0; i<self.avioes.length; i++){
+            $scope.desenharNoRadar(self.avioes[i]);
         }
     };
 
@@ -75,6 +97,34 @@ app.controller('entradaCtrl', function($scope) {
 
     $scope.trocaFormaEntradaAviao = function () {
         self.cartesiano = !self.cartesiano;
+    };
+
+    $scope.polarCartesiano = function (bean) {
+        bean.x = bean.raio * Math.cos(bean.angulo * Math.PI / 180);
+        bean.y = bean.raio * Math.sin(bean.angulo * Math.PI / 180);
+        return bean;
+    };
+
+    $scope.translandar = function (bean) {
+        bean.x += (bean.velocidade * $scope.segundosHoras(1));//esse 1 é o tempo e ele deve ser igual a tempo que iremos atualizar o radar
+        bean.y += (bean.velocidade * $scope.segundosHoras(1));
+        return bean;
+    };
+
+    $scope.segundosHoras = function(segundos){
+        return segundos / 3600;
+    };
+
+    
+
+    $scope.limparTela = function (w, h) {
+
+        self.ctx.fillStyle = "white";
+        self.ctx.beginPath();
+        self.ctx.rect(0, 0, w, h);
+        self.ctx.closePath();
+        self.ctx.fill();
+        self.ctx.stroke();
     };
 
     $scope.init();
