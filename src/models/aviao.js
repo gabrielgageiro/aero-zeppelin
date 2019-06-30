@@ -1,4 +1,4 @@
-aviaoApp.factory('Aviao', function() {
+app.factory('Aviao', function() {
 
     function Aviao() {
         this.nome = geraAviaoAleatorio();
@@ -55,10 +55,6 @@ aviaoApp.factory('Aviao', function() {
 
     Aviao.prototype.setDirecao = function (direcao) {
         this.direcao = direcao;
-    };
-
-    Aviao.prototype.getMatricula = function () {
-        return this.matricula;
     };
 
     Aviao.prototype.isSelecionado = function () {
