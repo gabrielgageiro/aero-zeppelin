@@ -10,8 +10,8 @@ h1 {
 }
 
 .canvas{
-    /*background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9e93c030-3b07-4704-a362-31d6a8df8b85/d481yc8-e8ab7237-e1ae-45cc-bef0-1edd5bbd4b96.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzllOTNjMDMwLTNiMDctNDcwNC1hMzYyLTMxZDZhOGRmOGI4NVwvZDQ4MXljOC1lOGFiNzIzNy1lMWFlLTQ1Y2MtYmVmMC0xZWRkNWJiZDRiOTYuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.wUfBviwKk98VhXJ4BpObTE50YTXaKTyt8XhGNNS9ee4');*/
     background-repeat: no-repeat;
+    /*background-color: cornflowerblue; todo? escolher um fundo ?*/
     border: 2px solid #6699CC;
 }
 
