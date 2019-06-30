@@ -19,7 +19,7 @@ app.factory('AviaoFactory', function (MessageService) {
         }
 
         function _filterSelecionado(aviao) {
-            return aviao.isSelecionado();
+            return aviao.isAtivo();
         }
 
         function _getAvioesAtivos() {
@@ -31,7 +31,7 @@ app.factory('AviaoFactory', function (MessageService) {
                 MessageService.showMessage(false, 'Indice inválido!');
                 return;
             }
-
+            MessageService.showMessage(true, 'Avião removido!');
             let removido = avioes.splice(index, 1);
             //todo printar no console
         }

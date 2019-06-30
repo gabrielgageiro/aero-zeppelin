@@ -7,8 +7,8 @@
     <md-content flex class="toolbar-content" style="overflow: auto; height: 100vh">
         <div flex style="margin: 5px" >
             <md-list-item ng-repeat="aviao in getTesteAviao()" layout="row" flex>
-                <md-checkbox class="md-primary" ng-model="true" aria-label="Selecionar Avião"></md-checkbox>
-                <p ng-bind="aviao"></p>
+                <md-checkbox class="md-primary" ng-model="aviao.ativo" aria-label="Selecionar Avião"></md-checkbox>
+                <p ng-bind="aviao.nome">aviao</p>
                 <md-button class="md-icon-button" aria-label="Remover" ng-click="removerAviao($index)">
                     <md-icon class="material-icons">delete</md-icon>
                 </md-button>

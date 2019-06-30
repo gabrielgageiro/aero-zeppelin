@@ -1,12 +1,12 @@
-app.factory('Aviao', function() {
+app.factory('Aviao', function () {
 
     function Aviao() {
         this.nome = geraAviaoAleatorio();
         this.ativo = true;
     }
 
-    function geraAviaoAleatorio(){
-        return Math.floor(Math.random() * 10);
+    function geraAviaoAleatorio() {
+        return 'LATAM voo já caiu número: ' + Math.floor(Math.random() * 10);
     }
 
     Aviao.prototype.getX = function () {

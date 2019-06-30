@@ -62,14 +62,10 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
 
     };
 
-    $scope.geraAviaoAleatorio = function(){
-        return Math.floor(Math.random() * 10);
-    };
-
     $scope.atualizaTodosAvioes = function(){
         $scope.limparTela();
 
-        var avioes = AviaoFactory.getAvioes();
+        var avioes = AviaoFactory.getAvioesAtivos();
         for(let i=0; i < avioes.length; i++){
             $scope.desenharNoRadar(avioes[i]);
         }

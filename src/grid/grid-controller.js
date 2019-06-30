@@ -1,16 +1,11 @@
-app.controller('gridCtrl', function($scope, $mdDialog) {
+app.controller('gridCtrl', function($scope, $mdDialog, AviaoFactory) {
 
     $scope.init = function(){
     };
 
 
     $scope.getTesteAviao = function(){
-        // var aviao = [];
-        //
-        // for (var i = 0; i< 13; i++){
-        //     aviao.push("AVIÃO LATAM MATRICULA " + i);
-        // }
-        // return aviao;
+        return AviaoFactory.getAvioes();
     };
 
     $scope.removerAviao = function (index) {
@@ -22,7 +17,7 @@ app.controller('gridCtrl', function($scope, $mdDialog) {
             .cancel('Cancelar');
 
         $mdDialog.show(confirm).then(function() {
-            console.log("removeu");
+            AviaoFactory.removeAviao(index);
         }, function() {
             console.log("Cancelou");
         });
