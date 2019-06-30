@@ -5,8 +5,6 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory) {
 
     self.cartesiano = true;
 
-    self.ctx;
-
     $scope.entradaDeDados = {
         x : '',
         y: '',
@@ -20,21 +18,30 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory) {
         self.ctx = $scope.getContextCanvas();
         setInterval(function(){
             $scope.atualizaTodosAvioes();
-        }, 7000);
+        }, 5000);
     };
 
     $scope.inserirAviao = function (bean) {
-        if (!self.cartesiano && bean.raio && bean.angulo) {
-            $scope.polarCartesiano(bean);
-        }
         let aviao = new Aviao();
+
+        aviao.setAngulo(bean.angulo);
+        aviao.setX(bean.x);
+        aviao.setY(bean.y);
+        aviao.setRaio(bean.raio);
+        aviao.setVelocidade(bean.velocidade);
+        aviao.setDirecao(bean.direcao);
+        
+        if (!self.cartesiano && bean.raio != null && bean.angulo != null) {
+            $scope.polarCartesiano(aviao);
+        }
+
         AviaoFactory.addAviao(aviao);
-        $scope.carregaAviao(bean);
+        $scope.carregaAviao(aviao);
     };
 
     $scope.carregaAviao = function (bean) {
         if ($scope.validarPosicaoAviao(bean)) {
-            var aviao = new Object();
+            let aviao = new Object();
             aviao.x = bean.x;
             aviao.y = bean.y;
             // let aviao = new Aviao();
@@ -50,8 +57,7 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory) {
 
     $scope.getContextCanvas = function(){
         let radar = document.querySelector('#radar');
-        let ctx = radar.getContext('2d');
-        return ctx;
+        return radar.getContext('2d');
     };
 
     $scope.desenharNoRadar = function(aviao){        
@@ -105,6 +111,7 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory) {
     $scope.polarCartesiano = function (bean) {
         bean.x = bean.raio * Math.cos(bean.angulo * Math.PI / 180);
         bean.y = bean.raio * Math.sin(bean.angulo * Math.PI / 180);
+        console.log(bean);
         return bean;
     };
 
@@ -117,8 +124,6 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory) {
     $scope.segundosHoras = function(segundos){
         return segundos / 3600;
     };
-
-    
 
     $scope.limparTela = function () {
         let radar = document.querySelector('#radar'); 
