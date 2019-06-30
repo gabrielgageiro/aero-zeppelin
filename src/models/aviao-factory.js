@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('AviaoFactory', function (MessageService) {
+app.factory('AviaoFactory', function (MessageService, ConsoleService) {
     function AviaoFactory() {
         var avioes = [];
 
@@ -10,8 +10,7 @@ app.factory('AviaoFactory', function (MessageService) {
                 return
             }
             avioes.push(aviao);
-            MessageService.showMessage(true, 'Avião adicionado com sucesso!');
-            //todO: adicionar no console
+            ConsoleService.addRegistro('Avião ' + aviao.getNome() + ' Adicionado')
         }
 
         function _getAvioes() {
@@ -31,9 +30,8 @@ app.factory('AviaoFactory', function (MessageService) {
                 MessageService.showMessage(false, 'Indice inválido!');
                 return;
             }
-            MessageService.showMessage(true, 'Avião removido!');
             let removido = avioes.splice(index, 1);
-            //todo printar no console
+            ConsoleService.addRegistro('Avião ' + removido[0].getNome() + ' Removido')
         }
 
         return {
