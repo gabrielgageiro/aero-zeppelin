@@ -29,9 +29,15 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
         aviao.setVelocidade(bean.velocidade);
         aviao.setDirecao(bean.direcao);
 
+        if (!aviao.getDirecao() || !aviao.getVelocidade()){
+            MessageService.showMessage(false,'Informe a direção e velocidade do avião!')
+            return;
+        }
+
         if (!self.cartesiano && bean.raio != null && bean.angulo != null) {
             $scope.polarCartesiano(aviao);
         }
+
         if($scope.validarPosicaoAviao(aviao)){
             AviaoFactory.addAviao(aviao);
             $scope.desenharNoRadar(aviao);
@@ -71,13 +77,14 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
 
     $scope.validarPosicaoAviao = function(novoAviao){
         var avioes = AviaoFactory.getAvioes();
-        if(avioes.length < 2){
+        if(avioes.length < 1){
             return true;
         }
 
         for(var i=0; i < avioes.length; i++){
             let distancia = $scope.distanciaEntrePontos(novoAviao.getX(), novoAviao.getY(), avioes[i].getX(), avioes[i].getY());
 
+            console.log('distancia do aviao ' + avioes[i].getNome() + '   ' + distancia);
             if(distancia < 10){
                 MessageService.showMessage(false,'A distância entre dois aviões não deve ser menor que 10, neste caso ela é '+ parseFloat(distancia).toPrecision(3));
                 return false;

@@ -5,11 +5,12 @@ app.factory('AviaoFactory', function (MessageService) {
         var avioes = [];
 
         function _addAviao(aviao) {
-            if (!aviao || !aviao.getNome()) {
+            if (!aviao || !aviao.getNome() || !aviao.getVelocidade() || !aviao.getDirecao()) {
                 MessageService.showMessage(false, 'Não foi possível adicionar o avião!');
                 return
             }
             avioes.push(aviao);
+            MessageService.showMessage(true, 'Avião adicionado com sucesso!');
             //todO: adicionar no console
         }
 
