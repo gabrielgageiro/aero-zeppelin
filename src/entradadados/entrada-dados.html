@@ -7,7 +7,7 @@
     <md-content flex class="toolbar-content" layout="column" style="position: relative;height: 85%;overflow: hidden">
         <div flex layout="row" >
             <div flex layout="column" class="div-input" ng-if="ctrl.cartesiano">
-                <md-input-container flex style="margin: 0">
+                <md-input-container flex style="margin: 0; margin-top: 15px">
                     <label>Posição X</label>
                     <input type="number" ng-model="entradaDeDados.x">
                 </md-input-container>
@@ -17,7 +17,7 @@
                 </md-input-container>
             </div>
             <div flex layout="column" class="div-input" ng-if="!ctrl.cartesiano">
-                <md-input-container flex style="margin: 0">
+                <md-input-container flex style="margin: 0; margin-top: 15px">
                     <label>Raio</label>
                     <input id="raio" type="number" ng-model="entradaDeDados.raio">
                 </md-input-container>
@@ -27,7 +27,7 @@
                 </md-input-container>
             </div>
             <div flex layout="column" class="div-input" >
-                <md-input-container flex style="margin: 0">
+                <md-input-container flex style="margin: 0; margin-top: 15px">
                     <label>Velocidade</label>
                     <input type="number" ng-model="entradaDeDados.velocidade">
                 </md-input-container>
