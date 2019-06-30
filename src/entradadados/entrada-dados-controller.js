@@ -1,4 +1,4 @@
-app.controller('entradaCtrl', function($scope) {
+app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory) {
     var self = this;
 
     self.avioes = [];
@@ -27,6 +27,8 @@ app.controller('entradaCtrl', function($scope) {
         if (!self.cartesiano && bean.raio && bean.angulo) {
             $scope.polarCartesiano(bean);
         }
+        let aviao = new Aviao();
+        AviaoFactory.addAviao(aviao);
         $scope.carregaAviao(bean);
     };
 

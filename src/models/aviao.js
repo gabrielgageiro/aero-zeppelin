@@ -2,7 +2,7 @@ app.factory('Aviao', function() {
 
     function Aviao() {
         this.nome = geraAviaoAleatorio();
-        this.selecionado = true;
+        this.ativo = true;
     }
 
     function geraAviaoAleatorio(){
@@ -57,12 +57,12 @@ app.factory('Aviao', function() {
         this.direcao = direcao;
     };
 
-    Aviao.prototype.isSelecionado = function () {
-        return this.selecionado;
+    Aviao.prototype.isAtivo = function () {
+        return this.ativo;
     };
 
-    Aviao.prototype.changeSelecionado = function () {
-        return this.selecionado = !this.selecionado;
+    Aviao.prototype.changeAtivo = function () {
+        return this.ativo = !this.ativo;
     };
 
     Aviao.prototype.getNome = function () {
