@@ -40,9 +40,9 @@ app.controller('entradaCtrl', function($scope) {
             // aviao.setY(bean.y);
             self.avioes.push(aviao);
 
-            console.log(self.avioes);
+            //console.log(self.avioes);
             
-            //$scope.desenharNoRadar(self.avioes);
+            $scope.desenharNoRadar(aviao);
         }
     };
 
@@ -53,6 +53,7 @@ app.controller('entradaCtrl', function($scope) {
     };
 
     $scope.desenharNoRadar = function(aviao){        
+        let radar = document.querySelector('#radar');      
 
         let x = radar.width / 2;
         let y = radar.height / 2;
@@ -70,10 +71,10 @@ app.controller('entradaCtrl', function($scope) {
 
     $scope.atualizaTodosAvioes = function(){
         //let radar = document.querySelector('#radar');
-        //$scope.limparTela(radar.width, radar.height);
+        $scope.limparTela();
         
         for(let i=0; i<self.avioes.length; i++){
-            $scope.desenharNoRadar(self.avioes[i]);
+            $scope.desenharNoRadar(self.avioes[i]);            
         }
     };
 
@@ -117,14 +118,9 @@ app.controller('entradaCtrl', function($scope) {
 
     
 
-    $scope.limparTela = function (w, h) {
-
-        self.ctx.fillStyle = "white";
-        self.ctx.beginPath();
-        self.ctx.rect(0, 0, w, h);
-        self.ctx.closePath();
-        self.ctx.fill();
-        self.ctx.stroke();
+    $scope.limparTela = function () {
+        let radar = document.querySelector('#radar'); 
+        self.ctx.clearRect(0, 0, radar.width, radar.height)
     };
 
     $scope.init();
