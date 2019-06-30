@@ -5,7 +5,6 @@ app.factory('AviaoFactory', function (toastError) {
         var avioes = [];
 
         function _addAviao(aviao) {
-            console.log(aviao.getNome());
             if (!aviao || !aviao.getNome()) {
                 toastError.showMessage(false, 'Não foi possível adicionar o avião!');
                 return
