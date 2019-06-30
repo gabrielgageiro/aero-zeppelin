@@ -12,9 +12,5 @@ app.controller('transformacaoCtrl', function($scope) {
     $scope.init = function(){
     };
 
-    $scope.teste = function(bean){
-        console.log(bean);
-    };
-
     $scope.init();
 });

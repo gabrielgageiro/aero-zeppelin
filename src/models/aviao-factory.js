@@ -1,12 +1,12 @@
 'use strict';
 
-app.factory('AviaoFactory', function (toastError) {
+app.factory('AviaoFactory', function (MessageService) {
     function AviaoFactory() {
         var avioes = [];
 
         function _addAviao(aviao) {
             if (!aviao || !aviao.getNome()) {
-                toastError.showMessage(false, 'Não foi possível adicionar o avião!');
+                MessageService.showMessage(false, 'Não foi possível adicionar o avião!');
                 return
             }
             avioes.push(aviao);
@@ -27,7 +27,7 @@ app.factory('AviaoFactory', function (toastError) {
 
         function _removeAviao(index) {
             if (!index == null || index < 0) {
-                toastError.showMessage(false, 'Indice inválido!');
+                MessageService.showMessage(false, 'Indice inválido!');
                 return;
             }
 

@@ -2,7 +2,6 @@ app.controller('consoleCtrl', function($scope) {
 
     var registros = [];
     $scope.init = function(){
-        console.log('oi');
     };
 
     $scope.getRegistros = function(){

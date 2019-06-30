@@ -1,7 +1,7 @@
 app.config(function ($mdThemingProvider) {
     $mdThemingProvider.theme("success-toast");
     $mdThemingProvider.theme("error-toast");
-}).service('toastError', function ($mdToast) {
+}).service('MessageService', function ($mdToast) {
     this.showMessage = function (isSuccess, msg) {
         var type = typeof isSuccess === "boolean" && isSuccess === true ? 'success' : 'error';
 

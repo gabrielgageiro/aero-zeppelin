@@ -10,7 +10,6 @@ app.controller('rastreamentoCtrl', function($scope) {
     };
 
     $scope.init = function(){
-        console.table('teste');
     };
 
     $scope.teste = function(bean){

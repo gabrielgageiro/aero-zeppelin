@@ -16,9 +16,5 @@ var app = angular.module('app', ['ngMaterial', 'ngMessages'])
 	$scope.init = function(){
 	};
 
-	$scope.teste = function(bean){
-        console.log(bean);
-	};
-	
 	$scope.init();
 }]);
