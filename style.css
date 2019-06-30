@@ -27,3 +27,13 @@ h1 {
 md-input-container {
     margin: 0
 }
+
+md-toast.md-error-toast-theme div.md-toast-content{
+    color: white !important;
+    background-color: red !important;
+}
+
+md-toast.md-success-toast-theme div.md-toast-content{
+    color: white !important;
+    background-color: green !important;
+}
