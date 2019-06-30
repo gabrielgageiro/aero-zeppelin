@@ -31,8 +31,13 @@
         <div flex="70" ng-include="'src/grid/grid.html'"></div>
     </div>
     <div flex layout="column">
-        <canvas flex="50" id="radar" class="canvas"></canvas>
-        <div flex style="max-block-size: max-content" ng-include="'src/entradadados/entrada-dados.html'"></div>
+        <div flex="50">
+            <div style="height: 50vh" class="canvas">
+<!--                todo: ajustar o calculo do tamanho da tela para nao quebrar em tela pequena-->
+                <canvas id="radar"></canvas>
+            </div>
+        </div>
+        <div flex ng-include="'src/entradadados/entrada-dados.html'"></div>
         <div flex ng-include="'src/funcoestransformacao/funcoes-transformacao.html'"></div>
     </div>
     <div flex="20" layout="column">
