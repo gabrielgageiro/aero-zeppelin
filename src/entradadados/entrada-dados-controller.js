@@ -16,7 +16,7 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
         self.ctx = $scope.getContextCanvas();
         setInterval(function(){
             $scope.atualizaTodosAvioes();
-        }, 5000);
+        }, 500);
     };
 
     $scope.inserirAviao = function (bean) {
@@ -50,24 +50,36 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
     };
 
     $scope.desenharNoRadar = function(aviao){
-        let radar = document.querySelector('#radar');
+        
+        if(aviao){
+        let radar = document.querySelector('#radar');        
 
         let x = radar.width / 2;
         let y = radar.height / 2;
 
         x += aviao.getX();
         y -= aviao.getY();
-       
+        self.ctx.font = "10px Verdana";
         self.ctx.fillText(aviao.getNome(), x, y);
-
+        }
     };
 
     $scope.atualizaTodosAvioes = function(){
-        $scope.limparTela();
+        $scope.limparTela();         
 
         var avioes = AviaoFactory.getAvioesAtivos();
+
         for(let i=0; i < avioes.length; i++){
+            avioes[i].setY(avioes[i].getY() - 10);
+            
+            if(avioes[i].getX() >= 150 || avioes[i].getX() <= -150 || avioes[i].getY() >= 75 || avioes[i].getY() <= -75){  
+                console.log('haha', i);
+                                              
+                AviaoFactory.removeAviao(i);
+            }
+            if(avioes.length > 0){
             $scope.desenharNoRadar(avioes[i]);
+            }
         }
     };
 
