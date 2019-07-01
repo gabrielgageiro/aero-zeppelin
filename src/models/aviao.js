@@ -6,7 +6,7 @@ app.factory('Aviao', function () {
     }
 
     function geraAviaoAleatorio() {
-        return 'LATAM voo já caiu número: ' + Math.floor(Math.random() * 10);
+        return Math.floor(Math.random() * 10);
     }
 
     Aviao.prototype.getX = function () {
