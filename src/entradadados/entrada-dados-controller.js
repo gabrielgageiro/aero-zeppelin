@@ -70,9 +70,9 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
         var avioes = AviaoFactory.getAvioesAtivos();
 
         for(let i=0; i < avioes.length; i++){
-            avioes[i].setY(avioes[i].getY() - 10);
+            // avioes[i].setY(avioes[i].getY() - 10);
             
-            if(avioes[i].getX() >= 150 || avioes[i].getX() <= -150 || avioes[i].getY() >= 75 || avioes[i].getY() <= -75){  
+            if(avioes[i].getX() >= 150 || avioes[i].getX() <= -150 || avioes[i].getY() >= 75 || avioes[i].getY() <= -75){
                 console.log('haha', i);
                                               
                 AviaoFactory.removeAviao(i);
