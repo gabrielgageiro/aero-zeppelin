@@ -27,13 +27,34 @@ app.controller('transformacaoCtrl', function($scope, AviaoFactory) {
     };
 
     $scope.escalonar = function () { //todo ajustar os calculos
-        bean.x += (bean.velocidade * $scope.segundosHoras(1));//esse 1 é o tempo e ele deve ser igual a tempo que iremos atualizar o radar
-        bean.y += (bean.velocidade * $scope.segundosHoras(1));
-        return bean;
+        let avioesAtivos = AviaoFactory.getAvioesAtivos();
+        for (let i = 0 ; i< avioesAtivos.length; i++){
+            let x = avioesAtivos[i].getX();
+            let y = avioesAtivos[i].getY();
+
+            x *= ($scope.escalonarX / 100);
+            y *= ($scope.escalonarY / 100);
+
+            avioesAtivos[i].setX(x);
+            avioesAtivos[i].setY(y);
+        }
     };
 
     $scope.rotacionar = function () {
-        //tood implementar
+        let avioesAtivos = AviaoFactory.getAvioesAtivos();
+
+        for(let i=0; i<avioesAtivos.length; i++){
+            let x = avioesAtivos[i].getX();
+            let y = avioesAtivos[i].getY();
+            let angulo = avioesAtivos[i].getAngulo();
+            
+            x = x * Math.cos(angulo * Math.PI / 180) - y * Math.sin(angulo * Math.PI / 180);
+            y = y * Math.cos(angulo * Math.PI / 180) + x * Math.sin(angulo * Math.PI / 180);
+
+            avioesAtivos[i].setX(x);
+            avioesAtivos[i].setY(y);
+        }
+
     };
 
 
