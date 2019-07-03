@@ -24,11 +24,11 @@
         <div flex layout="row">
             <md-input-container flex="40">
                 <label>Escalonar X</label>
-                <input type="number" ng-model="escalonarX">
+                <input type="number" step="0.01" ng-model="escalonarX">
             </md-input-container>
             <md-input-container flex="40">
                 <label>Escalonar Y</label>
-                <input type="number" ng-model="escalonarY">
+                <input type="number" step="0.01" ng-model="escalonarY">
             </md-input-container>
             <div flex>
                 <md-button class="md-raised md-primary" ng-click="escalonar()"
