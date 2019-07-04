@@ -1,3 +1,5 @@
+'use strict';
+
 app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageService) {
     const imgAviao = document.getElementById('aviaoImg');
     var self = this;
@@ -21,6 +23,7 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
     };
 
     $scope.inserirAviao = function (bean) {
+        if($scope.validarPosicaoAviao(bean)){
         let aviao = new Aviao();
 
         aviao.setAngulo(bean.angulo);
@@ -31,7 +34,7 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
         aviao.setDirecao(bean.direcao);
 
         if (!aviao.getDirecao() || !aviao.getVelocidade()){
-            MessageService.showMessage(false,'Informe a direção e velocidade do avião!')
+            MessageService.showMessage(false,'Informe a direção e velocidade do avião!');
             return;
         }
 
@@ -43,6 +46,7 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
             AviaoFactory.addAviao(aviao);
             $scope.desenharNoRadar(aviao);
         }
+    }
     };
 
     $scope.getContextCanvas = function(){
@@ -81,6 +85,16 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
             //
             //     AviaoFactory.removeAviao(i);
             // }
+            for(let j=0; j < avioes.length; j++){
+                if(avioes[i].getNome() != avioes[j].getNome()){
+                    let d = $scope.distanciaEntrePontos(avioes[i].getX(), avioes[i].getY(), avioes[j].getX(), avioes[j].getY());
+                        if(d < 40){
+                            MessageService.showMessage(false,'O avião '+avioes[i].getNome()+' irá colidir com o avião '+avioes[j].getNome());
+
+                        }
+            }
+            }
+
             if(avioes.length > 0){
             $scope.desenharNoRadar(avioes[i]);
             }
@@ -88,16 +102,15 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
     };
 
     $scope.validarPosicaoAviao = function(novoAviao){
+        
         var avioes = AviaoFactory.getAvioes();
         if(avioes.length < 1){
             return true;
         }
 
         for(var i=0; i < avioes.length; i++){
-            let distancia = $scope.distanciaEntrePontos(novoAviao.getX(), novoAviao.getY(), avioes[i].getX(), avioes[i].getY());
-
-            console.log('distancia do aviao ' + avioes[i].getNome() + '   ' + distancia);
-            if(distancia < 10){
+            let distancia = $scope.distanciaEntrePontos(novoAviao.x, novoAviao.y, avioes[i].getX(), avioes[i].getY());
+            if(distancia < 40){
                 MessageService.showMessage(false,'A distância entre dois aviões não deve ser menor que 10, neste caso ela é '+ parseFloat(distancia).toPrecision(3));
                 return false;
             }
@@ -125,7 +138,7 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
     };
 
     $scope.getProximaPosicaoAviao = function(x, y, velocidade){
-        return x += velocidade * 1;
+        return x += velocidade * 0.5;
     };
 
     $scope.init();
