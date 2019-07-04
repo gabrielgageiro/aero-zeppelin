@@ -27,7 +27,7 @@
     <script src="src/models/aviao.js"></script>
     <script src="src/models/MessageService.js"></script>
     <script src="src/console/ConsoleService.js"></script>
-    <img id="aviaoImg" src="/img/airplane.svg" height="10" width="10">
+    <img style="display: none" id="aviaoImg" src="/img/airplane.svg">
 </head>
 <body layout="column" ng-controller="indexCtrl">
 <div layout="row" flex style="overflow: hidden">
@@ -38,7 +38,7 @@
     <div flex layout="column">
         <div flex="50">
             <div style="height: 50vh" class="canvas">
-                <canvas id="radar" style="border: red;border-style: groove"></canvas>
+                <canvas id="radar"></canvas>
             </div>
         </div>
         <div flex ng-include="'src/entradadados/entrada-dados.html'"></div>
