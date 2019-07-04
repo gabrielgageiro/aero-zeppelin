@@ -36,8 +36,8 @@
     </div>
     <div flex layout="column">
         <div flex="50">
-            <div style="height: 50vh" class="canvas">
-                <canvas style="height: 100%;width: 100%" id="radar"></canvas>
+            <div style="height: 100%;width: 100%" class="canvas">
+                <canvas  id="radar"></canvas>
             </div>
         </div>
         <div flex ng-include="'src/entradadados/entrada-dados.html'"></div>
@@ -46,6 +46,9 @@
     <div flex="20" layout="column">
         <div flex ng-include="'src/console/console.html'" ></div>
     </div>
+</div>
+<div style="display: none">
+    <img id="aviaoImg" src="/img/aviao2.svg" width="100px" height="100px">
 </div>
 </body>
 </html>
