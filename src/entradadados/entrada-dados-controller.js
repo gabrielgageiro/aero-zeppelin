@@ -1,4 +1,5 @@
 app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageService) {
+    const imgAviao = document.getElementById('aviaoImg');
     var self = this;
 
     self.cartesiano = true;
@@ -59,8 +60,9 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
 
         x += aviao.getX();
         y -= aviao.getY();
-        self.ctx.font = "10px Verdana";
-        self.ctx.fillText(aviao.getNome(), x, y);
+        //self.ctx.font = "10px Verdana";
+        //self.ctx.fillText(aviao.getNome(), x, y);
+        self.ctx.drawImage(imgAviao, x, y, 20, 20);
         }
     };
 
@@ -70,7 +72,7 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
         var avioes = AviaoFactory.getAvioesAtivos();
 
         for(let i=0; i < avioes.length; i++){
-            // avioes[i].setY(avioes[i].getY() - 10);
+             avioes[i].setX(avioes[i].getX() + 1);
             
             if(avioes[i].getX() >= 150 || avioes[i].getX() <= -150 || avioes[i].getY() >= 75 || avioes[i].getY() <= -75){
                 console.log('haha', i);
