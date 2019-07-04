@@ -6,7 +6,12 @@ app.factory('Aviao', function () {
     }
 
     function geraAviaoAleatorio() {
-        return Math.floor(Math.random() * 10);
+        let arrayCaracteres = ['A', 'B', 'C', 'D', 'E', 'F'];
+        let arrayNumeros = ['380', '772', '799', '146', '495', '468'];
+        let indiceCaracteres = Math.floor(Math.random() * arrayCaracteres.length);
+        let indiceNumeros = Math.floor(Math.random() * arrayNumeros.length);
+        
+        return arrayCaracteres[indiceCaracteres] + arrayNumeros[indiceNumeros];
     }
 
     Aviao.prototype.getX = function () {
