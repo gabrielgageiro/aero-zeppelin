@@ -47,6 +47,10 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
 
     $scope.getContextCanvas = function(){
         let radar = document.querySelector('#radar');
+        radar.style.width='100%';
+        radar.style.height='100%';
+        radar.width  = radar.offsetWidth;
+        radar.height = radar.offsetHeight;
         return radar.getContext('2d');
     };
 
