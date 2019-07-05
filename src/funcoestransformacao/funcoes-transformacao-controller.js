@@ -16,7 +16,7 @@ app.controller('transformacaoCtrl', function($scope, AviaoFactory, MessageServic
     $scope.translandar = function () {
         
         if($scope.transladarDirecaoX != undefined && $scope.transladarDirecaoY != undefined){
-            AviaoFactory.translandar($scope.transladarDirecaoX, $scope.transladarDirecaoY);
+            AviaoFactory.transladar($scope.transladarDirecaoX, $scope.transladarDirecaoY);
         } else {
             MessageService.showMessage(false,'Informe o valor X e Y para translandar');
         }
