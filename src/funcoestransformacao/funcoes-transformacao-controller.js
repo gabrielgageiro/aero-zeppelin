@@ -15,15 +15,15 @@ app.controller('transformacaoCtrl', function($scope, AviaoFactory, MessageServic
 
     $scope.translandar = function () {
         
-        if($scope.transladarDirecaoX != undefined && $scope.transladarDirecaoY != undefined){
-            AviaoFactory.translandar($scope.transladarDirecaoX, $scope.transladarDirecaoY);
+        if($scope.transladarDirecaoX != null && $scope.transladarDirecaoY != null){
+            AviaoFactory.transladar($scope.transladarDirecaoX, $scope.transladarDirecaoY);
         } else {
             MessageService.showMessage(false,'Informe o valor X e Y para translandar');
         }
     };
 
     $scope.escalonar = function () { //todo ajustar os calculos
-        if($scope.escalonarX != undefined && $scope.escalonarY != undefined){
+        if($scope.escalonarX != null && $scope.escalonarY != null){
             AviaoFactory.escalonar($scope.escalonarX, $scope.escalonarY);
         } else {
             MessageService.showMessage(false,'Informe o valor X e Y para escalonar');
@@ -31,7 +31,7 @@ app.controller('transformacaoCtrl', function($scope, AviaoFactory, MessageServic
     };
 
     $scope.rotacionar = function () {
-        if($scope.centroRotacaoX != undefined && $scope.centroRotacaoX != undefined && $scope.anguloRotacao){
+        if($scope.centroRotacaoX != null && $scope.centroRotacaoY != null && $scope.anguloRotacao){
             AviaoFactory.rotacionar($scope.anguloRotacao, $scope.escalonarX, $scope.escalonarY);
         } else {
             MessageService.showMessage(false,'Informe o valor X, Y e o Angulo para escalonar');

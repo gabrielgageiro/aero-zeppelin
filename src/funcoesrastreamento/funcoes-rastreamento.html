@@ -10,10 +10,10 @@
                 <div flex layout="row">
                     <div flex>
                         <label>Distância mínima aeroporto</label>
-                        <input type="number" ng-model="entradaDeDados.direcao">
+                        <input type="number" ng-model="distanciaAeroporto">
                     </div>
                     <div flex="40">
-                        <md-button class="md-raised md-primary " ng-click="teste(entradaDeDados)"
+                        <md-button class="md-raised md-primary " ng-click="setDistanciaMinimaAeroporto(distanciaAeroporto)"
                                    style="background:red;width: 100px">
                             Aeroporto
                         </md-button>
@@ -25,10 +25,10 @@
 
                     <div flex>
                         <label>Distância mínima avião</label>
-                        <input type="number" ng-model="entradaDeDados.direcao">
+                        <input type="number" ng-model="distanciaMinAviao">
                     </div>
                     <div flex="40">
-                        <md-button class="md-raised md-primary" ng-click="teste(entradaDeDados)"
+                        <md-button class="md-raised md-primary" ng-click="setDistanciaMinimaAviao(distanciaMinAviao)"
                                    style="background:red;width: 100px">
                             Avião
                         </md-button>
@@ -39,10 +39,10 @@
                 <div flex layout="row">
                     <div flex>
                         <label>Tempo mínimo</label>
-                        <input type="number" ng-model="entradaDeDados.direcao">
+                        <input type="number" ng-model="tempoMinimoColisao">
                     </div>
                     <div flex="40">
-                        <md-button class="md-raised md-primary" ng-click="teste(entradaDeDados)"
+                        <md-button class="md-raised md-primary" ng-click="setTempoMinimoColisao(tempoMinimoColisao)"
                                    style="background:red;width: 100px">
                             Colisão
                         </md-button>

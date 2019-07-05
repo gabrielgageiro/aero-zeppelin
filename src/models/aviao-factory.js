@@ -3,6 +3,9 @@
 app.factory('AviaoFactory', function (MessageService, ConsoleService) {
     function AviaoFactory() {
         var avioes = [];
+        var DIST_MIN_AEROPORTO = 0;
+        var TEMPO_MIN_COLISAO = 0;
+        var DIST_MIN_AVIAO = 0;
 
         function _addAviao(aviao) {
             if (!aviao || !aviao.getNome() || !aviao.getVelocidade() || !aviao.getDirecao()) {
@@ -61,9 +64,7 @@ app.factory('AviaoFactory', function (MessageService, ConsoleService) {
 
             console.log(x - (largura / 2));
             
-
             avioesAtivos[i].setX(x - (largura / 2));
-            avioesAtivos[i]
 
             altura += altura * (escalonarX / 100);
             largura += largura * (escalonarY / 100);
@@ -88,6 +89,30 @@ app.factory('AviaoFactory', function (MessageService, ConsoleService) {
             }
         }
 
+        function _tempoMinimoColisao(tempoMinColisao) {
+            if(tempoMinColisao){
+                TEMPO_MIN_COLISAO = tempoMinColisao;
+                ConsoleService.addRegistro('Tempo mínimo de de colisão de ' + tempoMinColisao + ' minutos');
+            }
+            return TEMPO_MIN_COLISAO;
+        }
+
+        function _distanciaMinimaAeroporto(distanciaAeroporto) {
+            if(distanciaAeroporto){
+                DIST_MIN_AEROPORTO = distanciaAeroporto;
+                ConsoleService.addRegistro('Distancia mínima do aeroporto de ' + distanciaAeroporto + ' metros');
+            }
+            return DIST_MIN_AEROPORTO;
+        }
+
+        function _distanciaMinimaAviao(distanciaMinAviao) {
+            if(distanciaMinAviao){
+                DIST_MIN_AVIAO = distanciaMinAviao;
+                ConsoleService.addRegistro('Distancia mínima do avião de ' + distanciaMinAviao + ' metros');
+            }
+            return DIST_MIN_AVIAO;
+        }
+
         return {
             addAviao: _addAviao,
             getAvioes: _getAvioes,
@@ -95,7 +120,10 @@ app.factory('AviaoFactory', function (MessageService, ConsoleService) {
             removeAviao: _removeAviao,
             transladar: _transladar,
             escalonar: _escalonar,
-            rotacionar: _rotacionar
+            rotacionar: _rotacionar,
+            tempoMinimoColisao: _tempoMinimoColisao,
+            distanciaMinimaAeroporto: _distanciaMinimaAeroporto,
+            distanciaMinimaAviao: _distanciaMinimaAviao
         };
     }
 

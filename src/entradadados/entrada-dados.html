@@ -2,6 +2,9 @@
     <md-toolbar class="md-small-tb">
         <div class="md-toolbar-tools">
             <h1 flex>Entrada de Dados</h1>
+            <md-button id="monitorarAvioes" class="md-raised md-primary" ng-click="changeMonitorarAvioes()">
+                {{ctrl.monitorarAvioes ? 'PAUSAR' : 'CONTINUAR'}}
+            </md-button>
         </div>
     </md-toolbar>
     <md-content flex class="toolbar-content" layout="column" style="position: relative;height: 85%;overflow: hidden">
