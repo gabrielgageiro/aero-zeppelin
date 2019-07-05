@@ -1,3 +1,6 @@
+
+
+
 app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageService) {
     const imgAviao = document.getElementById('aviaoImg');
     let radar = document.querySelector('#radar');
@@ -23,10 +26,12 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
 
     $scope.init = function(){
         self.ctx = $scope.getContextCanvas();
-        self.ctx.transform(1, 0, 0, -1, 0, radar.height);
-        setInterval(function(){
-            $scope.atualizaTodosAvioes();
-        }, 500);
+        
+            setInterval(function(){
+                if(self.monitorarAvioes){
+                $scope.atualizaTodosAvioes();
+            }
+            }, 500);
     };
 
     $scope.inserirAviao = function (bean) {
@@ -38,7 +43,9 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
         aviao.setY(bean.y);
         aviao.setRaio(bean.raio);
         aviao.setVelocidade(bean.velocidade);
-        aviao.setDirecao(bean.direcao);        
+        aviao.setDirecao(bean.direcao);
+        aviao.setXAnt(bean.x);     
+        aviao.setYAnt(bean.y); 
 
         if (!aviao.getDirecao() || !aviao.getVelocidade()){
             MessageService.showMessage(false,'Informe a direção e velocidade do avião!');
@@ -87,37 +94,29 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
     };
 
     $scope.atualizaTodosAvioes = function(){
-        if(self.monitorarAvioes) {
-            $scope.limparTela();
+        $scope.limparTela();         
 
-            var avioes = AviaoFactory.getAvioesAtivos();
+        var avioes = AviaoFactory.getAvioesAtivos();
 
         for(let i=0; i < avioes.length; i++){
-             //avioes[i].setX(avioes[i].getX() + 1);//atualizar a nova posicao do aviao
-             var d = $scope.calcRota(avioes[i].getX(),avioes[i].getY(),avioes[i].getVelocidade());
-             //avioes[i].setX($scope.getProximaPosicaoAviaoX(avioes[i].getX(), avioes[i].getVelocidade()));
-             avioes[i].setX($scope.getProximaPosicaoAviaoX(d, avioes[i].getDirecao()));
-             //avioes[i].setY($scope.getProximaPosicaoAviaoY(avioes[i].getY(), avioes[i].getVelocidade()));
-             avioes[i].setY($scope.getProximaPosicaoAviaoY(d, avioes[i].getDirecao()));
-             console.log(avioes[i].getX(),avioes[i].getY())
-            //todo: arrumar os limites
-            // if(avioes[i].getX() >= 150 || avioes[i].getX() <= -150 || avioes[i].getY() >= 75 || avioes[i].getY() <= -75){
-            //
-            //     AviaoFactory.removeAviao(i);
-            // }
+             var d = $scope.calcRota(avioes[i]);
+             avioes[i].setX($scope.getProximaPosicaoAviaoX(d, avioes[i]));
+             avioes[i].setY($scope.getProximaPosicaoAviaoY(d, avioes[i]));
+             console.log('A ', avioes[i].getX(), ' B' ,avioes[i].getY());
+            
+             
             for(let j=0; j < avioes.length; j++){
                 if(avioes[i].getNome() != avioes[j].getNome()){
                     let d = $scope.distanciaEntrePontos(avioes[i].getX(), avioes[i].getY(), avioes[j].getX(), avioes[j].getY());
-                        if(d < 40){
+                        if(d < 10){
                             MessageService.showMessage(false,'O avião '+avioes[i].getNome()+' irá colidir com o avião '+avioes[j].getNome());
 
                         }
-                    }
-                }
+            }
+            }
 
-                if (avioes.length > 0) {
-                    $scope.desenharNoRadar(avioes[i]);
-                }
+            if(avioes.length > 0){
+            $scope.desenharNoRadar(avioes[i]);
             }
         }
     };
@@ -153,41 +152,43 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
         return bean;
     };
 
-    $scope.polarCartesianoRaioAnguloX = function(raio, angulo){
-        return raio * Math.cos( angulo * Math.PI/180 );
-    };
-    $scope.polarCartesianoRaioAnguloY = function(raio, angulo){
-        return raio * Math.sin( angulo * Math.PI/180 );
-    };
-
     $scope.limparTela = function () {
         let radar = document.querySelector('#radar'); 
         self.ctx.clearRect(0, 0, radar.width, radar.height)
     };
 
-    $scope.calcRota = function(x,y, velocidade){
-        var d = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2), 2);
-        return d += velocidade * 0.5;
-    };
+    $scope.calcRota = function(aviao){
+        var d = Math.sqrt(Math.pow((aviao.getXAnt() - aviao.getX()), 2) + Math.pow((aviao.getYAnt() - aviao.getY()), 2), 2);
+        return d += aviao.getVelocidade() * 0.5;
+    }
 
-    $scope.getProximaPosicaoAviaoX = function(d, direcao){
-        return Math.cos( -direcao * Math.PI / 180) * d;
+    $scope.getProximaPosicaoAviaoX = function(d, aviao){
+
+        var gambi = aviao.getX() + Math.cos(- aviao.getDirecao() * Math.PI / 180) * d;
+        return gambi//aviao.getX() += Math.cos(- aviao.getDirecao() * Math.PI / 180) * d;
         //return x += velocidade * 0.5;
     };
 
-    $scope.getProximaPosicaoAviaoY = function(d, direcao){
-        return Math.sin( -direcao * Math.PI / 180) * d;
+    $scope.getProximaPosicaoAviaoY = function(d, aviao){
+        var gambi2 = aviao.getY() + Math.sin(- aviao.getDirecao() * Math.PI / 180) * d;
+        return gambi2//aviao.getY() += Math.sin(- aviao.getDirecao() * Math.PI / 180) * d;
         //return y += velocidade * 0.5;
     };
 
     $scope.changeMonitorarAvioes = function(){
         self.monitorarAvioes = ! self.monitorarAvioes;
     };
+
     $scope.init();
 });
 
 /*
 
+self.monitorarAvioes = true;
+
+$scope.changeMonitorarAvioes = function(){
+        self.monitorarAvioes = ! self.monitorarAvioes;
+    };
 
 
 app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageService) {

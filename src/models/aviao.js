@@ -3,8 +3,8 @@ app.factory('Aviao', function () {
     function Aviao() {
         this.nome = geraAviaoAleatorio();
         this.ativo = true;
-        this.largura = 30;
-        this.altura = 30;
+        this.largura = 10;
+        this.altura = 10;
     }
 
     function geraAviaoAleatorio() {
@@ -90,6 +90,22 @@ app.factory('Aviao', function () {
 
     Aviao.prototype.setAltura = function (altura) {
         this.altura = altura;
+    };
+
+    Aviao.prototype.getXAnt = function () {
+        return this.xAnt;
+    };
+
+    Aviao.prototype.setXAnt = function (xAnt) {
+        this.xAnt = xAnt;
+    };
+
+    Aviao.prototype.getYAnt = function () {
+        return this.yAnt;
+    };
+
+    Aviao.prototype.setYAnt = function (yAnt) {
+        this.yAnt = yAnt;
     };
 
     return Aviao;

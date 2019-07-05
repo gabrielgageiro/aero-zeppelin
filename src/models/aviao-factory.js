@@ -81,12 +81,14 @@ app.factory('AviaoFactory', function (MessageService, ConsoleService) {
             for(let i=0; i < avioesAtivos.length; i++){
                 let x = avioesAtivos[i].getX();
                 let y = avioesAtivos[i].getY();
+                _transladar(x, y);
 
-                x = x * Math.cos(anguloRotacao * Math.PI / 180) - x * Math.sin(anguloRotacao * Math.PI / 180);
-                y = y * Math.cos(anguloRotacao * Math.PI / 180) + y * Math.sin(anguloRotacao * Math.PI / 180);
+                x = x * Math.cos(anguloRotacao * Math.PI / 180) - y *  Math.sin(anguloRotacao * Math.PI / 180);
+                y = y * Math.cos(anguloRotacao * Math.PI / 180) + x * Math.sin(anguloRotacao * Math.PI / 180);
 
                 avioesAtivos[i].setX(x);
                 avioesAtivos[i].setY(y);
+                _transladar(x * -1, y * -1);
             }
             ConsoleService.addRegistro('Aviões rotacionados em ' + anguloRotacao + ' graus')
         }
