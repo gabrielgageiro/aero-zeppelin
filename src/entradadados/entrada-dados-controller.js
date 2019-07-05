@@ -101,10 +101,12 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
                 //
                 //     AviaoFactory.removeAviao(i);
                 // }
+                let distanciaMinimaAviao = AviaoFactory.distanciaMinimaAviao();
                 for (let j = 0; j < avioes.length; j++) {
                     if (avioes[i].getNome() != avioes[j].getNome()) {
-                        let d = $scope.distanciaEntrePontos(avioes[i].getX(), avioes[i].getY(), avioes[j].getX(), avioes[j].getY());
-                        if (d < 40) {
+                        let distancia = $scope.distanciaEntrePontos(avioes[i].getX(), avioes[i].getY(), avioes[j].getX(), avioes[j].getY());
+
+                        if (distancia < distanciaMinimaAviao) {//todo adicionar no model aviao notificado de colisao para mostrar mensagem apenas uma vez
                             MessageService.showMessage(false, 'O avião ' + avioes[i].getNome() + ' irá colidir com o avião ' + avioes[j].getNome());
                         }
                     }
