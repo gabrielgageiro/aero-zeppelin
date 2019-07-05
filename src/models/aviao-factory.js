@@ -34,7 +34,7 @@ app.factory('AviaoFactory', function (MessageService, ConsoleService) {
             ConsoleService.addRegistro('Avião ' + removido[0].getNome() + ' Removido')
         }
 
-        function _translandar(transladarDirecaoX, transladarDirecaoY) {
+        function _transladar(transladarDirecaoX, transladarDirecaoY) {
             let avioesAtivos = _getAvioesAtivos();
     
             for (let i = 0 ; i< avioesAtivos.length; i++){
@@ -56,13 +56,20 @@ app.factory('AviaoFactory', function (MessageService, ConsoleService) {
 
          for (let i = 0 ; i< avioesAtivos.length; i++){
             let x = avioesAtivos[i].getX();
-            let y = avioesAtivos[i].getY();
+            let altura = avioesAtivos[i].getAltura();
+            let largura = avioesAtivos[i].getLargura();
 
-            x *= (escalonarX / 100);
-            y *= (escalonarY / 100);
+            console.log(x - (largura / 2));
+            
 
-            avioesAtivos[i].setX(x);
-            avioesAtivos[i].setY(y);
+            avioesAtivos[i].setX(x - (largura / 2));
+            avioesAtivos[i]
+
+            altura += altura * (escalonarX / 100);
+            largura += largura * (escalonarY / 100);
+
+            avioesAtivos[i].setAltura(altura);
+            avioesAtivos[i].setLargura(largura);
             }
         }
 
@@ -86,7 +93,7 @@ app.factory('AviaoFactory', function (MessageService, ConsoleService) {
             getAvioes: _getAvioes,
             getAvioesAtivos: _getAvioesAtivos,
             removeAviao: _removeAviao,
-            translandar: _translandar,
+            transladar: _transladar,
             escalonar: _escalonar,
             rotacionar: _rotacionar
         };
