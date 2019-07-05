@@ -1,20 +1,19 @@
-app.controller('rastreamentoCtrl', function($scope) {
+app.controller('rastreamentoCtrl', function($scope, MessageService, AviaoFactory) {
 
-    $scope.entradaDeDados = {
-        x : '',
-        y: '',
-        raio : '',
-        angulo : '',
-        velocidade : '',
-        direcao : ''
+    $scope.setTempoMinimoColisao = function (tempoMinColisao) {
+        AviaoFactory.tempoMinimoColisao(tempoMinColisao);
+        console.log(AviaoFactory.tempoMinimoColisao());
     };
 
-    $scope.init = function(){
+    $scope.setDistanciaMinimaAeroporto = function (distanciaAeroporto) {
+        AviaoFactory.distanciaMinimaAeroporto(distanciaAeroporto);
+        console.log(AviaoFactory.distanciaMinimaAeroporto());
     };
-
-    $scope.teste = function(bean){
-        console.log(bean);
+/*todo:distancia mimina ,tempo min (Definir minutos) , distancia aeroporto (pos 0 0)
+*
+* */
+    $scope.setDistanciaMinimaAviao = function (distanciaMinAviao) {
+        AviaoFactory.distanciaMinimaAviao(distanciaMinAviao);
+        console.log(AviaoFactory.distanciaMinimaAviao());
     };
-
-    $scope.init();
 });
