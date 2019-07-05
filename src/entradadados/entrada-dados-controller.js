@@ -1,5 +1,3 @@
-
-
 app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageService) {
     const imgAviao = document.getElementById('aviaoImg');
     let radar = document.querySelector('#radar');
@@ -24,6 +22,7 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
 
     $scope.init = function(){
         self.ctx = $scope.getContextCanvas();
+        self.ctx.transform(1, 0, 0, -1, 0, radar.height);
         setInterval(function(){
             $scope.atualizaTodosAvioes();
         }, 500);
@@ -72,8 +71,11 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
 
         let x = radar.width / 2;
         let y = radar.height / 2;
-
         self.ctx.translate(radar.width / 2, radar.height / 2);
+        let posX = aviao.getX() - aviao.getLargura() / 2;
+        let posY = aviao.getY() - aviao.getAltura() / 2;
+        self.ctx.drawImage(imgAviao, posX, posY, aviao.getLargura(), aviao.getAltura());
+        self.ctx.fillText(aviao.getNome(),posX, posY, aviao.getLargura(), aviao.getAltura());
 
         //x += aviao.getX();
         //y -= aviao.getY();        
@@ -159,7 +161,7 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
     $scope.calcRota = function(x,y, velocidade){
         var d = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2), 2);
         return d += velocidade * 0.5;
-    }
+    };
 
     $scope.getProximaPosicaoAviaoX = function(d, direcao){
         return Math.cos( -direcao * Math.PI / 180) * d;
