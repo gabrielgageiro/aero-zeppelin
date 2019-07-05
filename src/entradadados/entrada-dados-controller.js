@@ -109,7 +109,6 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
                     let d = $scope.distanciaEntrePontos(avioes[i].getX(), avioes[i].getY(), avioes[j].getX(), avioes[j].getY());
                         if(d < 40){
                             MessageService.showMessage(false,'O avião '+avioes[i].getNome()+' irá colidir com o avião '+avioes[j].getNome());
-
                         }
             }
             }
