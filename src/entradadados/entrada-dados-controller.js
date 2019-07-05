@@ -23,6 +23,7 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
 
     $scope.init = function(){
         self.ctx = $scope.getContextCanvas();
+        self.ctx.transform(1, 0, 0, -1, 0, radar.height);
         setInterval(function(){
             $scope.atualizaTodosAvioes();
         }, 500);
@@ -71,8 +72,10 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
             self.ctx.translate(radar.width / 2, radar.height / 2);
             self.ctx.fillStyle = "#09f";
 
-            let posX = aviao.getX() ;// - aviao.getLargura() / 2;
-            let posY = aviao.getY() ;//- aviao.getAltura() / 2;
+
+
+            let posX = aviao.getX() - aviao.getLargura() / 2;
+            let posY = aviao.getY() - aviao.getAltura() / 2;
             self.ctx.drawImage(imgAviao, posX, posY, aviao.getLargura(), aviao.getAltura());
             self.ctx.fillText(aviao.getNome(),posX, posY, aviao.getLargura(), aviao.getAltura());
 
