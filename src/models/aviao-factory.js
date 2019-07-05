@@ -39,7 +39,7 @@ app.factory('AviaoFactory', function (MessageService, ConsoleService) {
 
         function _transladar(transladarDirecaoX, transladarDirecaoY) {
             let avioesAtivos = _getAvioesAtivos();
-    
+
             for (let i = 0 ; i< avioesAtivos.length; i++){
                 let x = avioesAtivos[i].getX();
                 let y = avioesAtivos[i].getY();
@@ -48,8 +48,9 @@ app.factory('AviaoFactory', function (MessageService, ConsoleService) {
                 avioesAtivos[i].setX(x);
                 avioesAtivos[i].setY(y);
             }
+            ConsoleService.addRegistro('Aviões translatados em ' + transladarDirecaoX + ' X e ' + transladarDirecaoY + ' Y')
         }
-        
+
         function _segundosHoras(segundos){
             return segundos / 3600;
         }
@@ -62,8 +63,6 @@ app.factory('AviaoFactory', function (MessageService, ConsoleService) {
             let altura = avioesAtivos[i].getAltura();
             let largura = avioesAtivos[i].getLargura();
 
-            console.log(x - (largura / 2));
-            
             avioesAtivos[i].setX(x - (largura / 2));
 
             altura += altura * (escalonarX / 100);
@@ -72,6 +71,8 @@ app.factory('AviaoFactory', function (MessageService, ConsoleService) {
             avioesAtivos[i].setAltura(altura);
             avioesAtivos[i].setLargura(largura);
             }
+
+         ConsoleService.addRegistro('Aviões translatados em ' + escalonarX + ' X e ' + escalonarY + ' Y')
         }
 
         function _rotacionar(anguloRotacao, centroRotacaoX, centroRotacaoY){
@@ -80,13 +81,14 @@ app.factory('AviaoFactory', function (MessageService, ConsoleService) {
             for(let i=0; i < avioesAtivos.length; i++){
                 let x = avioesAtivos[i].getX();
                 let y = avioesAtivos[i].getY();
-                
+
                 x = x * Math.cos(anguloRotacao * Math.PI / 180) - x * Math.sin(anguloRotacao * Math.PI / 180);
                 y = y * Math.cos(anguloRotacao * Math.PI / 180) + y * Math.sin(anguloRotacao * Math.PI / 180);
-    
+
                 avioesAtivos[i].setX(x);
                 avioesAtivos[i].setY(y);
             }
+            ConsoleService.addRegistro('Aviões rotacionados em ' + anguloRotacao + ' graus')
         }
 
         function _tempoMinimoColisao(tempoMinColisao) {
