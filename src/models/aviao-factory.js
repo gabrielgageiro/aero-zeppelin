@@ -43,10 +43,12 @@ app.factory('AviaoFactory', function (MessageService, ConsoleService) {
             for (let i = 0 ; i< avioesAtivos.length; i++){
                 let x = avioesAtivos[i].getX();
                 let y = avioesAtivos[i].getY();
-                x += transladarDirecaoX + (avioesAtivos[i].getVelocidade() * _segundosHoras(0.5));
-                y += transladarDirecaoY + (avioesAtivos[i].getVelocidade() * _segundosHoras(0.5));
+                x += transladarDirecaoX; //+ (avioesAtivos[i].getVelocidade() * 0.5);
+                y += transladarDirecaoY; //+ (avioesAtivos[i].getVelocidade() * 0.5);
                 avioesAtivos[i].setX(x);
                 avioesAtivos[i].setY(y);
+                avioesAtivos[i].setXAnt(x);
+                avioesAtivos[i].setYAnt(y);
             }
             ConsoleService.addRegistro('Aviões translatados em ' + transladarDirecaoX + ' X e ' + transladarDirecaoY + ' Y')
         }
@@ -60,35 +62,39 @@ app.factory('AviaoFactory', function (MessageService, ConsoleService) {
 
          for (let i = 0 ; i< avioesAtivos.length; i++){
             let x = avioesAtivos[i].getX();
-            let altura = avioesAtivos[i].getAltura();
-            let largura = avioesAtivos[i].getLargura();
+            let y = avioesAtivos[i].getY();
+            
+            x *= escalonarX / 100;
+            y *= escalonarY / 100;
 
-            avioesAtivos[i].setX(x - (largura / 2));
-
-            altura += altura * (escalonarX / 100);
-            largura += largura * (escalonarY / 100);
-
-            avioesAtivos[i].setAltura(altura);
-            avioesAtivos[i].setLargura(largura);
+            avioesAtivos[i].setX(x);
+            avioesAtivos[i].setY(y);
             }
 
-         ConsoleService.addRegistro('Aviões translatados em ' + escalonarX + ' X e ' + escalonarY + ' Y')
+         ConsoleService.addRegistro('Aviões escalonados em ' + escalonarX + ' X e ' + escalonarY + ' Y')
         }
 
         function _rotacionar(anguloRotacao, centroRotacaoX, centroRotacaoY){
             let avioesAtivos = _getAvioesAtivos();
 
             for(let i=0; i < avioesAtivos.length; i++){
-                let x = avioesAtivos[i].getX();
-                let y = avioesAtivos[i].getY();
-                _transladar(x, y);
+                // let x = avioesAtivos[i].getX();
+                // let y = avioesAtivos[i].getY();
+                let direcao = avioesAtivos[i].getDirecao();
+                console.log('DIRECAO ',direcao);
+                
+                //_transladar(x, y);
 
-                x = x * Math.cos(anguloRotacao * Math.PI / 180) - y *  Math.sin(anguloRotacao * Math.PI / 180);
-                y = y * Math.cos(anguloRotacao * Math.PI / 180) + x * Math.sin(anguloRotacao * Math.PI / 180);
+                //x = x * Math.cos(anguloRotacao * Math.PI / 180) - y *  Math.sin(anguloRotacao * Math.PI / 180);
+               // y = y * Math.cos(anguloRotacao * Math.PI / 180) + x * Math.sin(anguloRotacao * Math.PI / 180);
 
-                avioesAtivos[i].setX(x);
-                avioesAtivos[i].setY(y);
-                _transladar(x * -1, y * -1);
+                //avioesAtivos[i].setX(x);
+                //avioesAtivos[i].setY(y);
+                let direcaoNova = direcao + anguloRotacao;
+                avioesAtivos[i].setDirecao(direcaoNova);
+                console.log('DIRECAONOVA ',direcaoNova);
+
+                //_transladar(x * -1, y * -1);
             }
             ConsoleService.addRegistro('Aviões rotacionados em ' + anguloRotacao + ' graus')
         }

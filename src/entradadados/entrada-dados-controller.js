@@ -77,15 +77,20 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
         if(aviao){
         let radar = document.querySelector('#radar');   
 
-        let x = radar.width / 2;
-        let y = radar.height / 2;
+        let x = radar.width;
+        let y = radar.height;
 
         self.ctx.translate(radar.width / 2, radar.height / 2);
 
         //x += aviao.getX();
-        //y -= aviao.getY();        
+        //y -= aviao.getY();   
         
-        self.ctx.drawImage(imgAviao, aviao.getX() - aviao.getLargura() / 2, aviao.getY() - aviao.getAltura() / 2, aviao.getLargura(), aviao.getAltura());
+        self.ctx.font = '12px';     
+        self.ctx.fillStyle = "#09f";
+        self.ctx.drawImage(imgAviao, aviao.getX() - aviao.getLargura() / 2, (aviao.getY() * -1) - aviao.getAltura() / 2, aviao.getLargura(), aviao.getAltura());
+        self.ctx.fillText(aviao.getNome(), aviao.getX() - aviao.getLargura() / 2, (aviao.getY() * -1) - aviao.getAltura() / 2, aviao.getLargura(), aviao.getAltura());
+
+        //self.ctx.rotate(aviao.getDirecao());
         //self.ctx.rotate(aviao.getDirecao());
         //self.ctx.rotate(0);
 
@@ -98,18 +103,21 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
 
         var avioes = AviaoFactory.getAvioesAtivos();
 
+        let distMinAviao = AviaoFactory.distanciaMinimaAviao();
         for(let i=0; i < avioes.length; i++){
+            //console.log('A ', avioes[i].getX(), ' B' ,avioes[i].getY());
+
              var d = $scope.calcRota(avioes[i]);
              avioes[i].setX($scope.getProximaPosicaoAviaoX(d, avioes[i]));
-             avioes[i].setY($scope.getProximaPosicaoAviaoY(d, avioes[i]));
-             console.log('A ', avioes[i].getX(), ' B' ,avioes[i].getY());
-            
+             avioes[i].setY($scope.getProximaPosicaoAviaoY(d, avioes[i]));            
              
             for(let j=0; j < avioes.length; j++){
                 if(avioes[i].getNome() != avioes[j].getNome()){
-                    let d = $scope.distanciaEntrePontos(avioes[i].getX(), avioes[i].getY(), avioes[j].getX(), avioes[j].getY());
-                        if(d < 10){
-                            MessageService.showMessage(false,'O avião '+avioes[i].getNome()+' irá colidir com o avião '+avioes[j].getNome());
+                    let dist = $scope.distanciaEntrePontos(avioes[i].getX(), avioes[i].getY(), avioes[j].getX(), avioes[j].getY());
+                    console.log('DDD ', dist ,'-', distMinAviao);
+                    
+                        if(dist < distMinAviao){
+                            MessageService.showMessage(false,'O avião '+avioes[i].getNome()+' está em risco de colisão com o avião '+avioes[j].getNome());
 
                         }
             }
@@ -155,22 +163,29 @@ app.controller('entradaCtrl', function($scope, Aviao, AviaoFactory, MessageServi
     $scope.limparTela = function () {
         let radar = document.querySelector('#radar'); 
         self.ctx.clearRect(0, 0, radar.width, radar.height)
+        self.ctx.beginPath();
+        self.ctx.moveTo(0,radar.height/2);
+        self.ctx.lineTo(radar.width, radar.height/2);
+      //  self.ctx.stroke();
+    //    self.ctx.beginPath();
+        self.ctx.moveTo(radar.width/2,0);
+        self.ctx.lineTo(radar.width/2, radar.height);
+        self.ctx.stroke();
     };
 
     $scope.calcRota = function(aviao){
-        var d = Math.sqrt(Math.pow((aviao.getXAnt() - aviao.getX()), 2) + Math.pow((aviao.getYAnt() - aviao.getY()), 2), 2);
+        var d = Math.sqrt(Math.pow((aviao.getX() - aviao.getXAnt()), 2) + Math.pow((aviao.getY() - aviao.getYAnt()), 2), 2);
         return d += aviao.getVelocidade() * 0.5;
     }
 
     $scope.getProximaPosicaoAviaoX = function(d, aviao){
-
-        var gambi = aviao.getX() + Math.cos(- aviao.getDirecao() * Math.PI / 180) * d;
-        return gambi//aviao.getX() += Math.cos(- aviao.getDirecao() * Math.PI / 180) * d;
+        var gambi = aviao.getXAnt() + Math.cos(- aviao.getDirecao() * Math.PI / 180) * d;
+        return gambi; //aviao.getX() += Math.cos(- aviao.getDirecao() * Math.PI / 180) * d;
         //return x += velocidade * 0.5;
     };
 
     $scope.getProximaPosicaoAviaoY = function(d, aviao){
-        var gambi2 = aviao.getY() + Math.sin(- aviao.getDirecao() * Math.PI / 180) * d;
+        var gambi2 = aviao.getYAnt() + Math.sin(- aviao.getDirecao() * Math.PI / 180) * d;
         return gambi2//aviao.getY() += Math.sin(- aviao.getDirecao() * Math.PI / 180) * d;
         //return y += velocidade * 0.5;
     };

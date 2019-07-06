@@ -3,8 +3,8 @@ app.factory('Aviao', function () {
     function Aviao() {
         this.nome = geraAviaoAleatorio();
         this.ativo = true;
-        this.largura = 10;
-        this.altura = 10;
+        this.largura = 20;
+        this.altura = 20;
     }
 
     function geraAviaoAleatorio() {
